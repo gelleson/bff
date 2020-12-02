@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserModel } from './user.model';
 import { Repository } from 'typeorm';
 import { UserCreateInput } from './dto/user-create.input';
+import { hashSync } from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -25,8 +26,16 @@ export class UserService {
         firstName: input.firstName,
         lastName: input.lastName,
         email: input.email,
-        password: input.password,
+        password: hashSync(input.password, 11),
       })
     );
+  }
+
+  public findByEmail(email: string) {
+    return this.repository.findOne({
+      where: {
+        email: email
+      }
+    });
   }
 }

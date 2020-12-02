@@ -1,9 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { BaseModel } from '@bff/api/database';
 
 @Entity({
   name: 'users'
 })
-export class UserModel {
+export class UserModel extends BaseModel<UserModel> {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -19,12 +21,11 @@ export class UserModel {
   email: string;
 
   @Column()
+  @Exclude()
   password: string;
 
-  @Column()
-  lastLogin: Date;
-
-  constructor(partial?: Partial<UserModel>) {
-    Object.assign(this, partial);
-  }
+  @Column({
+    nullable: true
+  })
+  lastLogin?: Date;
 }

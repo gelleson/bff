@@ -12,6 +12,6 @@ export class UserCreateInput {
   email: string;
 
   @MinLength(8)
-  @Matches('(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]*')
+  @Matches(/(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]*/)
   password: string;
 }

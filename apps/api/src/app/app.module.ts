@@ -14,7 +14,8 @@ import { AuthModule } from './auth/auth.module';
       type: 'sqlite',
       database: 'test.db',
       autoLoadEntities: true,
-      namingStrategy: new SnakeNamingStrategy()
+      namingStrategy: new SnakeNamingStrategy(),
+      synchronize: true
     }),
     AuthModule
   ],

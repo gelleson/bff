@@ -16,7 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bff/api/user": ["libs/api/user/src/index.ts"]
+      "@bff/api/user": ["libs/api/user/src/index.ts"],
+      "@bff/api/database": ["libs/api/database/src/index.ts"],
+      "@bff/api/auth": ["libs/api/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

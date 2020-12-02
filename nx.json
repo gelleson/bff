@@ -26,7 +26,10 @@
     "api": {
       "tags": []
     },
-    "api-user": {
+    "api-database": {
+      "tags": []
+    },
+    "api-auth": {
       "tags": []
     }
   }
