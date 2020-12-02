@@ -40,4 +40,28 @@ export class AccountService {
       }
     })
   }
+
+  public async addBalance(accountId: number, amount: number) {
+    const account = await this.repository.findOne(accountId);
+
+    if (!account) {
+      throw new BadRequestException();
+    }
+
+    account.balance = account.balance + amount;
+
+    return this.repository.save(account);
+  }
+
+  public async subBalance(accountId: number, amount: number) {
+    const account = await this.repository.findOne(accountId);
+
+    if (!account) {
+      throw new BadRequestException();
+    }
+
+    account.balance = account.balance - amount;
+
+    return this.repository.save(account);
+  }
 }

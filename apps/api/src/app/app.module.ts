@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { AuthModule } from './auth/auth.module';
 import { AccountModule } from './account/account.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { AccountModule } from './account/account.module';
       synchronize: true
     }),
     AuthModule,
-    AccountModule
+    AccountModule,
+    TransactionModule
   ],
   controllers: [AppController],
   providers: [AppService]
