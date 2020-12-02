@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { Auth, User } from '@bff/api/auth';
-import { UserModel } from './user.model';
+import { Auth, CurrentUser } from '@bff/api/auth';
+import { User } from './user.entity';
 
 @Auth()
 @Controller('users')
 export class UserController {
 
   @Get()
-  public getProfile(@User() user: UserModel) {
+  public getProfile(@CurrentUser() user: User) {
     return user;
   }
 }

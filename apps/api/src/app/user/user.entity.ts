@@ -5,7 +5,7 @@ import { BaseModel } from '@bff/api/database';
 @Entity({
   name: 'users'
 })
-export class UserModel extends BaseModel<UserModel> {
+export class User extends BaseModel<User> {
   @PrimaryGeneratedColumn()
   id: number;
 

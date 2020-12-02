@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserModel } from './user.model';
+import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { UserCreateInput } from './dto/user-create.input';
 import { hashSync } from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(UserModel) private repository: Repository<UserModel>) {
+  constructor(@InjectRepository(User) private repository: Repository<User>) {
   }
 
   public async checkEmail(email: string) {
@@ -22,13 +22,17 @@ export class UserService {
 
   public create(input: UserCreateInput) {
     return this.repository.save(
-      new UserModel({
+      new User({
         firstName: input.firstName,
         lastName: input.lastName,
         email: input.email,
         password: hashSync(input.password, 11),
       })
     );
+  }
+
+  public findById(id: number) {
+    return this.repository.findOne(id);
   }
 
   public findByEmail(email: string) {
