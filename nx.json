@@ -31,6 +31,13 @@
     },
     "api-auth": {
       "tags": []
+    },
+    "finance-web": {
+      "tags": []
+    },
+    "finance-web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["finance-web"]
     }
   }
 }
