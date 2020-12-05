@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository, Transaction as TransactionDB } from 'typeorm';
+import { Equal, FindManyOptions, Repository, Transaction as TransactionDB } from 'typeorm';
 import { Transaction } from './transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountService } from '../account/account.service';
@@ -14,6 +14,38 @@ export class TransactionService {
               private accountService: AccountService,
               private userService: UserService
   ) {
+  }
+
+  public find(userId: number, account: number, date?: Date, skip?: number, take?: number) {
+    return this.repository.find({
+      skip: skip,
+      take: take,
+      loadEagerRelations: true,
+      where: [
+        {
+          createdBy: {
+            id: userId,
+          },
+          credit: {
+            id: account
+          },
+          operationDate: this.dateFormat(date),
+        },
+        {
+          createdBy: {
+            id: userId,
+          },
+          debit: {
+            id: account,
+          },
+          operationDate: this.dateFormat(date),
+        },
+      ]
+    });
+  }
+
+  private dateFormat(date?: Date) {
+    return date ? Equal(date.toISOString().slice(0, 10)): date;
   }
 
   public async withdraw(userId: number, input: WithdrawInput) {

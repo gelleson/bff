@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Account } from '../account/account.entity';
 import { Operation } from './enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
@@ -13,16 +13,24 @@ export class Transaction extends BaseModel<Transaction>{
   id: number;
 
   @ManyToOne(() => Account, {
-    nullable: true
+    nullable: true,
+    eager: true,
+    onDelete: 'CASCADE',
   })
+  @JoinColumn()
   credit?: Account;
 
   @ManyToOne(() => Account, {
-    nullable: true
+    nullable: true,
+    eager: true,
+    onDelete: 'SET NULL',
   })
+  @JoinColumn()
   debit?: Account;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {
+    onDelete: 'SET NULL',
+  })
   @Exclude()
   createdBy: User;
 

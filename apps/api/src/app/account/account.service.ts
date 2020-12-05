@@ -4,6 +4,7 @@ import { Account } from './account.entity';
 import { Repository } from 'typeorm';
 import { UserService } from '../user/user.service';
 import { AccountCreateInput } from './dto/account-create.input';
+import { AccountUpdateInput } from './dto/account-update.input';
 
 @Injectable()
 export class AccountService {
@@ -25,6 +26,15 @@ export class AccountService {
         owner: user,
       })
     );
+  }
+
+  public async update(accountId: number, partial: AccountUpdateInput) {
+    const accountState = await this.repository.update(accountId, {
+      name: partial.name,
+      currency: partial.currency,
+    });
+
+    return this.repository.findOne(accountId);
   }
 
   public async delete(accountId: number) {

@@ -17,7 +17,8 @@ import { TransactionModule } from './transaction/transaction.module';
       database: 'test.db',
       autoLoadEntities: true,
       namingStrategy: new SnakeNamingStrategy(),
-      synchronize: true
+      synchronize: true,
+      logging: 'all'
     }),
     AuthModule,
     AccountModule,
