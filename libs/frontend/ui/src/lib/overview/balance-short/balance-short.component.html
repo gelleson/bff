@@ -1,0 +1,19 @@
+<h3 nz-typography>
+  Daily statistics
+</h3>
+<nz-row [nzGutter]="16">
+  <nz-col [nzSpan]="8">
+    <nz-statistic [nzValue]="(filterBy('WITHDRAW').length | number)!" [nzTitle]="'Withdraw'"></nz-statistic>
+  </nz-col>
+  <nz-col [nzSpan]="8">
+    <nz-statistic [nzValue]="(filterBy('INCOME').length | number)!" [nzTitle]="'Income'"></nz-statistic>
+  </nz-col>
+
+  <nz-col [nzSpan]="8">
+    <nz-statistic [nzValue]="(avrg() | number)!" [nzTitle]="'Avrg Amount'"></nz-statistic>
+  </nz-col>
+
+  <nz-col [nzSpan]="24">
+    <nz-statistic [nzValue]="(totalSpendMoney | number)!" [nzTitle]="'Total Spent Money(KZT)'"></nz-statistic>
+  </nz-col>
+</nz-row>

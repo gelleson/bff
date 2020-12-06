@@ -1,0 +1,25 @@
+<div class="container-desktop" >
+  <div class="image" [ngStyle]="getUrl()">
+  </div>
+  <div class="login-form">
+    <h2 nz-typography><a>Login</a></h2>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your email!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="email" placeholder="Email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+      Or <a [routerLink]="registerPath"> register now! </a>
+    </form>
+  </div>
+</div>

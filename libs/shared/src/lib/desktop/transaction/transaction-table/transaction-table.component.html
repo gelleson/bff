@@ -1,0 +1,30 @@
+<nz-badge [nzCount]="transactions.length">
+  <h3 nz-typography>Transactions</h3>
+</nz-badge>
+<nz-table>
+
+  <nz-table #basicTable [nzData]="transactions">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Operation</th>
+      <th>Amount</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Operation Date</th>
+      <th>Operation Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td [class]="data.operation | lowercase">{{ data.operation }}</td>
+      <td>{{ data.amount }}</td>
+      <td>{{ data.credit?.name }}</td>
+      <td>{{ data.debit?.name }}</td>
+      <td>{{ data.operationDate  }}</td>
+      <td>{{ data.transactionTime | date:'HH:mm:ss' }}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</nz-table>

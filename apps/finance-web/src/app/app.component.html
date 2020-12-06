@@ -1,17 +1,44 @@
 <nz-header id="header">
   <div class="logo">
-    <span nz-typography>BFF.1.0.0</span>
+    <span nz-typography>BFF.dev</span>
   </div>
 
-  <div class="account-info">
-    <span class="balance">T1200</span>
+  <div class="account-info" *ngIf="sessionQuery.logged$() | async">
+<!--    <span class="balance">T1200</span>-->
 
     <div class="avatar">
-      <nz-avatar nzText="A" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar>
-
+      <nz-avatar nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" [nzText]="'A'" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar>
     </div>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item nzDisabled>Profile</li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item nzDanger (click)="logout()">Logout</li>
+      </ul>
+    </nz-dropdown-menu>
   </div>
 </nz-header>
 
+<nz-layout>
+  <nz-sider nzTheme="light" *ngIf="sessionQuery.logged$() | async">
 
-<button nz-button nzType="danger"> Domain</button>
+    <ul nz-menu nzMode="vertical">
+      <li nz-menu-item >
+        <a routerLink="">Overview</a>
+      </li>
+
+      <li nz-menu-item >
+        <a routerLink="accounts">Accounts</a>
+      </li>
+
+    </ul>
+
+
+  </nz-sider>
+  <nz-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+</nz-layout>

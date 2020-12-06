@@ -3,18 +3,26 @@ import { Transaction } from '../transaction.entity';
 import { Account } from '../../account/account.entity';
 import { isNumber } from 'util';
 
+export interface AccountShort {
+  id: number;
+  name: string;
+}
+
 export class TransactionOutput {
+  id: number;
   amount: number;
   operation: Operation;
   transactionTime: Date;
-  operationDate?: string;
-  credit?: number;
-  debit?: number;
+  operationDate?: any;
+  credit?: AccountShort;
+  debit?: AccountShort;
 
   constructor(transaction: Transaction) {
+    this.id = transaction.id;
     this.amount = transaction.amount;
     this.operation = transaction.operation;
     this.transactionTime = transaction.transactionTime;
+    this.operationDate = transaction.operationDate;
     this.credit = this.getId(transaction.credit);
     this.debit = this.getId(transaction.debit);
   }
@@ -23,13 +31,15 @@ export class TransactionOutput {
     return transactions.map(transaction => new TransactionOutput(transaction));
   }
 
-  private getId(account: Account | number): number | undefined {
+  private getId(account: Account | number): {
+    id: number;
+    name: string;
+  } | undefined {
     if (account instanceof Account && account?.id !== undefined) {
-      return account.id;
-    }
-
-    if (isNumber(account)) {
-      return account;
+      return {
+        id: account.id,
+        name: account.name
+      };
     }
 
     return null;

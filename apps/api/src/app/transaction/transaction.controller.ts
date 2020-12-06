@@ -7,6 +7,7 @@ import { IncomeInput } from './dto/income.input';
 import { TransactionOutput } from './dto/transaction.output';
 import { PaginationOutput } from './dto/pagination.output';
 import { PageQuery } from './dto/page.query';
+import { TransferInput } from './dto/transfer.input';
 
 @Auth()
 @Controller('transactions')
@@ -15,14 +16,27 @@ export class TransactionController {
   constructor(private transactionService: TransactionService) {
   }
 
-  @Get(':accountId/accounts')
+  @Get('')
   public async find(@CurrentUser() user: User,
-                    @Param('accountId') accountId: number,
+                    @Query('accountId') accountId: number,
                     @Query() query: PageQuery
   ) {
+
+    if (!accountId) {
+      return new PaginationOutput(
+        query.getPageNumber(),
+        await this.transactionService.find(
+          user.id,
+          query.getDate(),
+          query.getPage(),
+          query.getSize(),
+        )
+      )
+    }
+
     return new PaginationOutput(
       query.getPageNumber(),
-      await this.transactionService.find(
+      await this.transactionService.findByAccount(
         user.id,
         accountId,
         query.getDate(),
@@ -43,6 +57,13 @@ export class TransactionController {
   public async income(@CurrentUser() user: User, @Body() payload: IncomeInput) {
     return new TransactionOutput(
       await this.transactionService.income(user.id, payload)
+    );
+  }
+
+  @Post('transfer')
+  public async transfer(@CurrentUser() user: User, @Body() payload: TransferInput) {
+    return new TransactionOutput(
+      await this.transactionService.transfer(user.id, payload)
     );
   }
 }

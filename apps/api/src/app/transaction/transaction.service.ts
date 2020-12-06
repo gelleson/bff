@@ -7,6 +7,7 @@ import { UserService } from '../user/user.service';
 import { WithdrawInput } from './dto/withdraw.input';
 import { Operation } from './enums/operation.enum';
 import { IncomeInput } from './dto/income.input';
+import { TransferInput } from './dto/transfer.input';
 
 @Injectable()
 export class TransactionService {
@@ -16,7 +17,24 @@ export class TransactionService {
   ) {
   }
 
-  public find(userId: number, account: number, date?: Date, skip?: number, take?: number) {
+  public find(userId: number,  date?: Date, skip?: number, take?: number) {
+    return this.repository.find({
+      skip: skip,
+      take: take,
+      loadEagerRelations: true,
+      order: {
+        id: 'DESC'
+      },
+      where: {
+        createdBy: {
+          id: userId,
+        },
+        operationDate: this.dateFormat(date),
+      },
+    });
+  }
+
+  public findByAccount(userId: number, account: number, date?: Date, skip?: number, take?: number) {
     return this.repository.find({
       skip: skip,
       take: take,
@@ -74,6 +92,24 @@ export class TransactionService {
         createdBy: user,
         amount: input.amount,
         operation: Operation.INCOME,
+        operationDate: input.operationDate ? input.operationDate : new Date(),
+        transactionTime: input.operationDate ? input.operationDate : new Date()
+      })
+    );
+  }
+
+  public async transfer(userId: number, input: TransferInput) {
+    const user = await this.userService.findById(userId);
+    const debit = await this.accountService.addBalance(input.debit, input.amount);
+    const credit = await this.accountService.subBalance(input.credit, input.amount);
+
+    return this.repository.save(
+      new Transaction({
+        debit: debit,
+        credit: credit,
+        createdBy: user,
+        amount: input.amount,
+        operation: Operation.TRANSFER,
         operationDate: input.operationDate ? input.operationDate : new Date(),
         transactionTime: input.operationDate ? input.operationDate : new Date()
       })

@@ -1,0 +1,19 @@
+.add-transaction-button {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+}
+
+
+.date-picker {
+  width: 100%;
+}
+
+.full-width {
+  width: 100% !important;
+}

@@ -15,9 +15,12 @@ export class AuthService {
   public async register(input: UserCreateInput) {
     const user = await this.userService.create(input);
 
-    return new TokenObject(
-      this.jwtService.sign(user.toObject())
-    );
+    return new TokenObject({
+      accessToken: this.jwtService.sign(user.toObject()),
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email
+    });
   }
 
   public async login(input: LoginInput) {
@@ -27,8 +30,8 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
-    return new TokenObject(
-      this.jwtService.sign(user.toObject())
-    );
+    return new TokenObject({
+      accessToken: this.jwtService.sign(user.toObject())
+    });
   }
 }

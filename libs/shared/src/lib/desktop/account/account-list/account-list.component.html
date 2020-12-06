@@ -1,0 +1,39 @@
+<nz-badge [nzCount]="accounts.length">
+  <h3 nz-typography>Accounts</h3>
+</nz-badge>
+<br>
+<nz-empty *ngIf="accounts.length === 0"></nz-empty>
+<div *ngIf="accounts.length !== 0"  class="accounts">
+
+  <nz-list nzItemLayout="horizontal" [nzLoading]="loading">
+
+    <nz-list-item *ngFor="let account of accounts">
+      <nz-list-item-meta>
+        <nz-list-item-meta-title>{{account.name}}</nz-list-item-meta-title>
+      </nz-list-item-meta>
+
+      <nz-list-item-meta>
+        <nz-list-item-meta-title>{{account.balance | currency:account.currency:'symbol-narrow'}}</nz-list-item-meta-title>
+
+      </nz-list-item-meta>
+
+      <nz-list-item-meta *ngIf="enableActions">
+        <nz-list-item-meta-title>
+          <bff-edit-account [account]="account"></bff-edit-account>
+          <button nz-button
+                  nzType="link"
+                  nzDanger
+                  (nzOnConfirm)="delete(account.id)"
+                  nz-popconfirm
+                  nzPopconfirmTitle="Are you sure delete this account?">Delete</button>
+        </nz-list-item-meta-title>
+      </nz-list-item-meta>
+
+    </nz-list-item>
+
+  </nz-list>
+</div>
+
+<div class="button-row" *ngIf="createAccountButton">
+  <bff-new-account #newAccountButton></bff-new-account>
+</div>

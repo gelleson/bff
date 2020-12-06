@@ -1,0 +1,37 @@
+<h1 nz-typography>
+  <a href="">Overview</a>
+</h1>
+
+<div class="container">
+  <nz-space style="width: 100%" nzDirection="vertical">
+    <nz-space-item>
+      <div nz-row nzGutter="20">
+
+        <div nz-col nzFlex="6">
+          <bff-account-list [accounts]="accounts" [loading]="accounts.length === 0"></bff-account-list>
+        </div>
+
+        <div nz-col nzFlex="6">
+          <bff-balance-short [transactions]="transactions"></bff-balance-short>
+
+        </div>
+
+      </div>
+    </nz-space-item>
+
+    <nz-space-item>
+      <div nz-row>
+
+        <div nz-col nzFlex="6">
+          <bff-transaction-table [transactions]="transactions"></bff-transaction-table>
+        </div>
+
+
+
+      </div>
+    </nz-space-item>
+  </nz-space>
+</div>
+
+
+<bff-new-transaction></bff-new-transaction>

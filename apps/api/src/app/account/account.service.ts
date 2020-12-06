@@ -24,6 +24,7 @@ export class AccountService {
         name: input.name,
         balance: input.balance,
         owner: user,
+        currency: input.currency
       })
     );
   }
@@ -32,6 +33,7 @@ export class AccountService {
     const accountState = await this.repository.update(accountId, {
       name: partial.name,
       currency: partial.currency,
+      balance: partial.balance
     });
 
     return this.repository.findOne(accountId);

@@ -1,0 +1,20 @@
+.container-desktop {
+  display: flex;
+  flex-direction: row;
+  min-height: 95vh;
+}
+
+.image  {
+  width: 70%;
+  min-width: 50%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.login-form {
+  width: 30%;
+  padding: 10px;
+}

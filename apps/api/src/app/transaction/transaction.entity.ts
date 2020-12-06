@@ -23,7 +23,7 @@ export class Transaction extends BaseModel<Transaction>{
   @ManyToOne(() => Account, {
     nullable: true,
     eager: true,
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
   })
   @JoinColumn()
   debit?: Account;

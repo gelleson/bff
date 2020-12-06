@@ -1,7 +1,11 @@
 export class TokenObject {
   accessToken: string;
 
-  constructor(token: string) {
-    this.accessToken = token;
+  firstName: string;
+  lastName: string;
+  email: string;
+
+  constructor(partial: Partial<TokenObject>) {
+    Object.assign(this, partial);
   }
 }

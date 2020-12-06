@@ -1,0 +1,46 @@
+<button (click)="taggle()" nz-button nzType="primary">Create Account</button>
+
+<nz-drawer
+  #drawer
+  [nzVisible]="opened"
+  nzWidth="400px"
+  (nzOnClose)="close()"
+  [nzClosable]="true"
+  nzTitle="Create Account"
+  [nzMaskClosable]="true">
+
+
+  <form *nzDrawerContent nz-form [formGroup]="form" (ngSubmit)="save()">
+    <br>
+
+    <nz-form-item>
+      <nz-form-label nzSpan="24" nzRequired>Name</nz-form-label>
+      <nz-form-control>
+        <nz-input-group>
+          <input formControlName="name" type="text" nz-input placeholder="Name">
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzSpan="24" nzRequired>Balance</nz-form-label>
+
+      <nz-form-control nzErrorTip="Please provide valid balance">
+        <nz-input-group [nzAddOnBefore]="currencyTempl">
+          <ng-template #currencyTempl>
+
+            <nz-select formControlName="currency">
+              <nz-option nzLabel="KZT" nzValue="KZT"></nz-option>
+              <nz-option nzLabel="USD" nzValue="USD"></nz-option>
+              <nz-option nzLabel="EURO" nzValue="EUR"></nz-option>
+            </nz-select>
+
+          </ng-template>
+          <input type="number" formControlName="balance" nz-input placeholder="Balance">
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button  [disabled]="!form.valid"  nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Save</button>
+  </form>
+</nz-drawer>
