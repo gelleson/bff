@@ -10,12 +10,13 @@ import { AccountModule } from './account/account.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import database from './config/database.config';
+import auth from './config/auth.config';
 
 @Module({
   imports: [
     UserModule,
     ConfigModule.forRoot({
-      load: [database]
+      load: [database, auth]
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
