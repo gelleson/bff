@@ -34,7 +34,9 @@ export class Transaction extends BaseModel<Transaction>{
   @Exclude()
   createdBy: User;
 
-  @Column('enum')
+  @Column('enum', {
+    enum: Operation
+  })
   operation: Operation;
 
   @Column({
