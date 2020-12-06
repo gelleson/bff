@@ -30,6 +30,8 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
+    await this.userService.updateLastLoginDate(user.id);
+
     return new TokenObject({
       accessToken: this.jwtService.sign(user.toObject())
     });
