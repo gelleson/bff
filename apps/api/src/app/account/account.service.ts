@@ -60,7 +60,7 @@ export class AccountService {
       throw new BadRequestException();
     }
 
-    account.balance = account.balance + amount;
+    account.balance = Number(account.balance) + amount;
 
     return this.repository.save(account);
   }
@@ -72,7 +72,7 @@ export class AccountService {
       throw new BadRequestException();
     }
 
-    account.balance = account.balance - amount;
+    account.balance = Number(account.balance) - amount;
 
     return this.repository.save(account);
   }

@@ -43,7 +43,7 @@ export class Transaction extends BaseModel<Transaction>{
     type: 'decimal',
     default: 0,
     scale: 2,
-    precision: 2,
+    precision: 10,
   })
   amount: number;
 

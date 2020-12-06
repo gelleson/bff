@@ -21,7 +21,7 @@ export class Account extends BaseModel<Account>{
     type: 'decimal',
     default: 0,
     scale: 2,
-    precision: 2,
+    precision: 10,
   })
   balance: number;
 
