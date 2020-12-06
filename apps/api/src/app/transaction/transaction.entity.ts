@@ -29,12 +29,12 @@ export class Transaction extends BaseModel<Transaction>{
   debit?: Account;
 
   @ManyToOne(() => User, {
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
   })
   @Exclude()
   createdBy: User;
 
-  @Column('simple-enum')
+  @Column('enum')
   operation: Operation;
 
   @Column({
