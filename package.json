@@ -63,7 +63,8 @@
     "tslib": "^2.0.0",
     "typeorm": "^0.2.29",
     "typeorm-naming-strategies": "^2.0.0",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "@nrwl/node": "10.4.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.3",
@@ -76,7 +77,6 @@
     "@nrwl/eslint-plugin-nx": "10.4.4",
     "@nrwl/jest": "10.4.4",
     "@nrwl/nest": "10.4.4",
-    "@nrwl/node": "10.4.4",
     "@nrwl/tao": "10.4.4",
     "@nrwl/workspace": "10.4.4",
     "@types/jest": "26.0.8",
