@@ -27,6 +27,7 @@ import database from './config/database.config';
           logging: configService.get('database.logging'),
           synchronize: configService.get<boolean>('database.synchronize'),
           autoLoadEntities: true,
+          namingStrategy: new SnakeNamingStrategy(),
         }
       }
     }),
