@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Equal, FindManyOptions, Repository, Transaction as TransactionDB } from 'typeorm';
-import { Transaction } from './transaction.entity';
+import { Connection, Equal, FindManyOptions, Repository, Transaction } from 'typeorm';
+import { Transaction as Trn  } from './transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountService } from '../account/account.service';
 import { UserService } from '../user/user.service';
@@ -11,9 +11,10 @@ import { TransferInput } from './dto/transfer.input';
 
 @Injectable()
 export class TransactionService {
-  constructor(@InjectRepository(Transaction) private repository: Repository<Transaction>,
+  constructor(@InjectRepository(Trn) private repository: Repository<Trn>,
               private accountService: AccountService,
-              private userService: UserService
+              private userService: UserService,
+              private connection: Connection
   ) {
   }
 
@@ -67,52 +68,58 @@ export class TransactionService {
   }
 
   public async withdraw(userId: number, input: WithdrawInput) {
-    const user = await this.userService.findById(userId);
-    const account = await this.accountService.subBalance(input.credit, input.amount);
+    return this.connection.transaction(async (em) => {
+      const user = await this.userService.findById(userId);
+      const account = await this.accountService.subBalance(input.credit, input.amount);
 
-    return this.repository.save(
-      new Transaction({
-        credit: account,
-        createdBy: user,
-        amount: input.amount,
-        operation: Operation.WITHDRAW,
-        operationDate: input.operationDate ? input.operationDate : new Date(),
-        transactionTime: input.operationDate ? input.operationDate : new Date()
-      })
-    );
+      return this.repository.save(
+        new Trn({
+          credit: account,
+          createdBy: user,
+          amount: input.amount,
+          operation: Operation.WITHDRAW,
+          operationDate: input.operationDate ? input.operationDate : new Date(),
+          transactionTime: input.operationDate ? input.operationDate : new Date()
+        })
+      );
+    });
   }
-
   public async income(userId: number, input: IncomeInput) {
-    const user = await this.userService.findById(userId);
-    const account = await this.accountService.addBalance(input.debit, input.amount);
+    return this.connection.transaction(async (_) => {
+      const user = await this.userService.findById(userId);
+      const account = await this.accountService.addBalance(input.debit, input.amount);
 
-    return this.repository.save(
-      new Transaction({
-        debit: account,
-        createdBy: user,
-        amount: input.amount,
-        operation: Operation.INCOME,
-        operationDate: input.operationDate ? input.operationDate : new Date(),
-        transactionTime: input.operationDate ? input.operationDate : new Date()
-      })
-    );
+      return this.repository.save(
+        new Trn({
+          debit: account,
+          createdBy: user,
+          amount: input.amount,
+          operation: Operation.INCOME,
+          operationDate: input.operationDate ? input.operationDate : new Date(),
+          transactionTime: input.operationDate ? input.operationDate : new Date()
+        })
+      );
+    })
   }
 
   public async transfer(userId: number, input: TransferInput) {
     const user = await this.userService.findById(userId);
-    const debit = await this.accountService.addBalance(input.debit, input.amount);
-    const credit = await this.accountService.subBalance(input.credit, input.amount);
 
-    return this.repository.save(
-      new Transaction({
-        debit: debit,
-        credit: credit,
-        createdBy: user,
-        amount: input.amount,
-        operation: Operation.TRANSFER,
-        operationDate: input.operationDate ? input.operationDate : new Date(),
-        transactionTime: input.operationDate ? input.operationDate : new Date()
-      })
-    );
+    return this.connection.transaction(async (em) => {
+      const debit = await this.accountService.addBalance(input.debit, input.amount);
+      const credit = await this.accountService.subBalance(input.credit, input.amount);
+
+      return this.repository.save(
+        new Trn({
+          debit: debit,
+          credit: credit,
+          createdBy: user,
+          amount: input.amount,
+          operation: Operation.TRANSFER,
+          operationDate: input.operationDate ? input.operationDate : new Date(),
+          transactionTime: input.operationDate ? input.operationDate : new Date()
+        })
+      );
+    })
   }
 }

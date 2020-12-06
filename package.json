@@ -47,6 +47,7 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/typeorm": "^7.1.5",
     "@nrwl/angular": "^10.4.4",
+    "@nrwl/node": "10.4.4",
     "@types/bcrypt": "^3.0.0",
     "bcrypt": "^5.0.0",
     "class-transformer": "^0.3.1",
@@ -63,8 +64,8 @@
     "tslib": "^2.0.0",
     "typeorm": "^0.2.29",
     "typeorm-naming-strategies": "^2.0.0",
-    "zone.js": "^0.10.2",
-    "@nrwl/node": "10.4.4"
+    "typeorm-transactional-cls-hooked": "^0.1.17",
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.3",
