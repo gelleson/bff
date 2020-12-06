@@ -8,6 +8,7 @@ import { WithdrawInput } from './dto/withdraw.input';
 import { Operation } from './enums/operation.enum';
 import { IncomeInput } from './dto/income.input';
 import { TransferInput } from './dto/transfer.input';
+import { Transactional } from 'typeorm-transactional-cls-hooked';
 
 @Injectable()
 export class TransactionService {
@@ -67,59 +68,57 @@ export class TransactionService {
     return date ? Equal(date.toISOString().slice(0, 10)): date;
   }
 
+  @Transactional()
   public async withdraw(userId: number, input: WithdrawInput) {
-    return this.connection.transaction(async (em) => {
-      const user = await this.userService.findById(userId);
-      const account = await this.accountService.subBalance(input.credit, input.amount);
+    const user = await this.userService.findById(userId);
+    const account = await this.accountService.subBalance(input.credit, input.amount);
 
-      return this.repository.save(
-        new Trn({
-          credit: account,
-          createdBy: user,
-          amount: input.amount,
-          operation: Operation.WITHDRAW,
-          operationDate: input.operationDate ? input.operationDate : new Date(),
-          transactionTime: input.operationDate ? input.operationDate : new Date()
-        })
-      );
-    });
+    return this.repository.save(
+      new Trn({
+        credit: account,
+        createdBy: user,
+        amount: input.amount,
+        operation: Operation.WITHDRAW,
+        operationDate: input.operationDate ? input.operationDate : new Date(),
+        transactionTime: input.operationDate ? input.operationDate : new Date()
+      })
+    );
   }
+
+  @Transactional()
   public async income(userId: number, input: IncomeInput) {
-    return this.connection.transaction(async (_) => {
-      const user = await this.userService.findById(userId);
-      const account = await this.accountService.addBalance(input.debit, input.amount);
+    const user = await this.userService.findById(userId);
+    const account = await this.accountService.addBalance(input.debit, input.amount);
 
-      return this.repository.save(
-        new Trn({
-          debit: account,
-          createdBy: user,
-          amount: input.amount,
-          operation: Operation.INCOME,
-          operationDate: input.operationDate ? input.operationDate : new Date(),
-          transactionTime: input.operationDate ? input.operationDate : new Date()
-        })
-      );
-    })
+    return this.repository.save(
+      new Trn({
+        debit: account,
+        createdBy: user,
+        amount: input.amount,
+        operation: Operation.INCOME,
+        operationDate: input.operationDate ? input.operationDate : new Date(),
+        transactionTime: input.operationDate ? input.operationDate : new Date()
+      })
+    );
   }
 
+  @Transactional()
   public async transfer(userId: number, input: TransferInput) {
     const user = await this.userService.findById(userId);
 
-    return this.connection.transaction(async (em) => {
-      const debit = await this.accountService.addBalance(input.debit, input.amount);
-      const credit = await this.accountService.subBalance(input.credit, input.amount);
+    const debit = await this.accountService.addBalance(input.debit, input.amount);
+    const credit = await this.accountService.subBalance(input.credit, input.amount);
 
-      return this.repository.save(
-        new Trn({
-          debit: debit,
-          credit: credit,
-          createdBy: user,
-          amount: input.amount,
-          operation: Operation.TRANSFER,
-          operationDate: input.operationDate ? input.operationDate : new Date(),
-          transactionTime: input.operationDate ? input.operationDate : new Date()
-        })
-      );
-    })
+    return this.repository.save(
+      new Trn({
+        debit: debit,
+        credit: credit,
+        createdBy: user,
+        amount: input.amount,
+        operation: Operation.TRANSFER,
+        operationDate: input.operationDate ? input.operationDate : new Date(),
+        transactionTime: input.operationDate ? input.operationDate : new Date()
+      })
+    );
   }
 }
