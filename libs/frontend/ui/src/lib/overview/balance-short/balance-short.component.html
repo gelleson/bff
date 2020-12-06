@@ -10,10 +10,14 @@
   </nz-col>
 
   <nz-col [nzSpan]="8">
+    <nz-statistic [nzValue]="(filterBy('TRANSFER').length | number)!" [nzTitle]="'Transfers'"></nz-statistic>
+  </nz-col>
+
+  <nz-col [nzSpan]="8">
     <nz-statistic [nzValue]="(avrg() | number)!" [nzTitle]="'Avrg Amount'"></nz-statistic>
   </nz-col>
 
-  <nz-col [nzSpan]="24">
+  <nz-col [nzSpan]="8">
     <nz-statistic [nzValue]="(totalSpendMoney | number)!" [nzTitle]="'Total Spent Money(KZT)'"></nz-statistic>
   </nz-col>
 </nz-row>

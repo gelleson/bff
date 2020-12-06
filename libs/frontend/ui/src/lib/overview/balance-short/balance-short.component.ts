@@ -22,6 +22,7 @@ export class BalanceShortComponent implements OnInit, OnChanges {
 
     this.totalSpendMoney = await this.transactionService
       .totalSpendMoney(new Date());
+
   }
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {

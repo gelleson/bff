@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Account } from '../account/account.entity';
 import { Operation } from './enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
@@ -52,4 +52,9 @@ export class Transaction extends BaseModel<Transaction>{
 
   @Column()
   transactionTime: Date;
+
+  @AfterLoad()
+  _convertsNumerics() {
+    this.amount = Number(this.amount);
+  }
 }

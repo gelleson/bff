@@ -5,7 +5,7 @@ import { PaginationObject, TransactionObject } from '@bff/interface';
 import { WithdrawInput } from '../dto/withdraw.input';
 import { IncomeInput } from '../dto/income.input';
 import { AccountService } from './account.service';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { TransferInput } from '../dto/transfer.input';
 
 @Injectable({
