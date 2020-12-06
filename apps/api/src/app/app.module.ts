@@ -24,8 +24,9 @@ import database from './config/database.config';
         return {
           type: 'postgres',
           url: configService.get('database.uri'),
-          logging: 'all',
-          synchronize: true,
+          logging: configService.get('database.logging'),
+          synchronize: configService.get<boolean>('database.synchronize'),
+          autoLoadEntities: true,
         }
       }
     }),
