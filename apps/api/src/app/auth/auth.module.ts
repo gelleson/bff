@@ -15,7 +15,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-
         return {
           secret: configService.get('auth.secret')
         }
