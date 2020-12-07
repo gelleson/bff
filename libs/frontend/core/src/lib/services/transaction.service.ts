@@ -48,4 +48,8 @@ export class TransactionService {
       .filter(transaction => transaction.operation === 'WITHDRAW')
       .reduce((prev, curr) => prev + curr.amount, 0);
   }
+
+  public delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/transactions/${id}`);
+  }
 }

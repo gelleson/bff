@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { TransactionService } from './transaction.service';
 import { Auth, CurrentUser } from '@bff/api/auth';
 import { User } from '../user/user.entity';
@@ -65,5 +65,10 @@ export class TransactionController {
     return new TransactionOutput(
       await this.transactionService.transfer(user.id, payload)
     );
+  }
+
+  @Delete(':transactionId')
+  public delete(@Param('transactionId') id: number) {
+    return this.transactionService.delete(id);
   }
 }

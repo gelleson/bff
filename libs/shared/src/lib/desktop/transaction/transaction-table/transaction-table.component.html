@@ -13,6 +13,7 @@
       <th>Debit</th>
       <th>Operation Date</th>
       <th>Operation Time</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,16 @@
       <td>{{ data.debit?.name }}</td>
       <td>{{ data.operationDate  }}</td>
       <td>{{ data.transactionTime | date:'HH:mm:ss' }}</td>
+      <td>
+        <button
+          nz-button
+          nzType="link"
+          nzDanger
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure delete this transaction?"
+          (nzOnConfirm)="delete(data)"
+        >Delete</button>
+      </td>
     </tr>
     </tbody>
   </nz-table>

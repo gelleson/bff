@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Connection, Equal, FindManyOptions, Repository, Transaction } from 'typeorm';
-import { Transaction as Trn  } from './transaction.entity';
+import { Connection, Equal, FindManyOptions, Repository } from 'typeorm';
+import { Transaction  } from './transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountService } from '../account/account.service';
 import { UserService } from '../user/user.service';
@@ -12,7 +12,7 @@ import { Transactional } from 'typeorm-transactional-cls-hooked';
 
 @Injectable()
 export class TransactionService {
-  constructor(@InjectRepository(Trn) private repository: Repository<Trn>,
+  constructor(@InjectRepository(Transaction) private repository: Repository<Transaction>,
               private accountService: AccountService,
               private userService: UserService,
               private connection: Connection
@@ -74,7 +74,7 @@ export class TransactionService {
     const account = await this.accountService.subBalance(input.credit, input.amount);
 
     return this.repository.save(
-      new Trn({
+      new Transaction({
         credit: account,
         createdBy: user,
         amount: input.amount,
@@ -91,7 +91,7 @@ export class TransactionService {
     const account = await this.accountService.addBalance(input.debit, input.amount);
 
     return this.repository.save(
-      new Trn({
+      new Transaction({
         debit: account,
         createdBy: user,
         amount: input.amount,
@@ -110,7 +110,7 @@ export class TransactionService {
     const credit = await this.accountService.subBalance(input.credit, input.amount);
 
     return this.repository.save(
-      new Trn({
+      new Transaction({
         debit: debit,
         credit: credit,
         createdBy: user,
@@ -120,5 +120,20 @@ export class TransactionService {
         transactionTime: input.operationDate ? input.operationDate : new Date()
       })
     );
+  }
+
+  @Transactional()
+  public async delete(id: number) {
+    const transaction = await this.repository.findOne(id);
+
+    if (transaction.credit) {
+      await this.accountService.addBalance(transaction.credit.id, transaction.amount);
+    }
+
+    if (transaction.debit) {
+      await this.accountService.subBalance(transaction.debit.id, transaction.amount);
+    }
+
+    await this.repository.delete(id);
   }
 }
