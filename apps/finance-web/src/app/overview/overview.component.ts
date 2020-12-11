@@ -8,8 +8,9 @@ import { AccountObject, TransactionObject } from '@bff/interface';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  accounts : AccountObject[] = [];
+  accounts: AccountObject[] = [];
   transactions: TransactionObject[] = [];
+  currentTime = new Date();
 
   constructor(private accountService: AccountService, private transactionService: TransactionService,
               private accountQuery: AccountQuery, private eventService: EventService) {
@@ -19,7 +20,7 @@ export class OverviewComponent implements OnInit {
 
     this.accountQuery
       .selectAll()
-      .subscribe(accounts => this.accounts = accounts)
+      .subscribe(accounts => this.accounts = accounts);
 
     this.transactionService.getTransactions(new Date())
       .subscribe(transactions => this.transactions = transactions.transactions);
@@ -33,10 +34,16 @@ export class OverviewComponent implements OnInit {
 
         this.transactionService.getTransactions(new Date())
           .subscribe(transactions => this.transactions = transactions.transactions);
-      })
+      });
   }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.currentTime = new Date();
+    }, 1000);
   }
 
+  getCurrentTime() {
+    return this.currentTime.toISOString();
+  }
 }
