@@ -14,5 +14,6 @@ module.exports = {
     '<rootDir>/libs/frontend/finance',
     '<rootDir>/libs/frontend/ui',
     '<rootDir>/libs/api/shared',
+    '<rootDir>/libs/api/modules',
   ],
 };

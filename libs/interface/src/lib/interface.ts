@@ -19,6 +19,7 @@ export class TransactionObject {
   operationDate?: string;
   credit?: AccountShortObject;
   debit?: AccountShortObject;
+  narrative?: string;
 }
 
 export class PaginationObject {

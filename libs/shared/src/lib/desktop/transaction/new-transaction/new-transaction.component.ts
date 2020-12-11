@@ -31,8 +31,9 @@ export class NewTransactionComponent implements OnInit {
     this.form = fb.group({
       amount: new FormControl(0, [Validators.required, Validators.min(1)]),
       operation: new FormControl('WITHDRAW',[Validators.required]),
-      credit: new FormControl(1),
+      credit: new FormControl(),
       debit: new FormControl(),
+      narrative: new FormControl(),
       time: new FormControl(new Date(), [Validators.required]),
     });
   }
@@ -59,6 +60,7 @@ export class NewTransactionComponent implements OnInit {
           .withdraw({
             credit: this.form.get('credit').value,
             amount: this.form.get('amount').value,
+            narrative: this.form.get('narrative').value,
             transactionTime: this.form.get('time').value
           });
         break;
@@ -68,6 +70,7 @@ export class NewTransactionComponent implements OnInit {
           .income({
             debit: this.form.get('debit').value,
             amount: Number(this.form.get('amount').value),
+            narrative: this.form.get('narrative').value,
             transactionTime: this.form.get('time').value
           });
         break;
@@ -77,6 +80,7 @@ export class NewTransactionComponent implements OnInit {
           .transfer({
             credit: this.form.get('credit').value,
             debit: this.form.get('debit').value,
+            narrative: this.form.get('narrative').value,
             amount: Number(this.form.get('amount').value),
             transactionTime: this.form.get('time').value
           });

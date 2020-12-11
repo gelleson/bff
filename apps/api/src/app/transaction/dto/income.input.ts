@@ -1,13 +1,9 @@
 import { IsDate, IsDateString, IsDecimal, IsNotEmpty, IsOptional, IsPositive } from 'class-validator';
+import { BaseTransactionInput } from './base.input';
+import { Expose } from 'class-transformer';
 
-export class IncomeInput {
+export class IncomeInput  extends BaseTransactionInput {
   @IsNotEmpty()
+  @Expose()
   debit: number;
-
-  @IsPositive()
-  amount: number;
-
-  @IsOptional()
-  @IsDate()
-  operationDate?: Date
 }

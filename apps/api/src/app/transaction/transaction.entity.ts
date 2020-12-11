@@ -47,6 +47,11 @@ export class Transaction extends BaseModel<Transaction>{
   })
   amount: number;
 
+  @Column({
+    nullable: true
+  })
+  narrative?: string;
+
   @Column('date')
   operationDate: Date;
 

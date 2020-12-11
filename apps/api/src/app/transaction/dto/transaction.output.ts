@@ -27,6 +27,8 @@ export class TransactionOutput {
   credit?: AccountShort;
   @Expose()
   debit?: AccountShort;
+  @Expose()
+  narrative?: string;
 
   constructor(transaction: Transaction) {
     this.id = transaction.id;
@@ -36,6 +38,7 @@ export class TransactionOutput {
     this.operationDate = transaction.operationDate;
     this.credit = this.getId(transaction.credit);
     this.debit = this.getId(transaction.debit);
+    this.narrative = transaction.narrative;
   }
 
   public static array(transactions: Transaction[]) {

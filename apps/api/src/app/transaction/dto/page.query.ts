@@ -1,6 +1,11 @@
+import { Expose } from 'class-transformer';
+
 export class PageQuery {
+  @Expose()
   date: string | Date;
+  @Expose()
   page? = 1;
+  @Expose()
   pageSize = 100;
 
   public getDate(): Date {

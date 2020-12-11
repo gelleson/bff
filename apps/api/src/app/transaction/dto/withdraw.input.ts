@@ -1,13 +1,9 @@
 import { IsDate, IsDateString, IsDecimal, IsNotEmpty, IsOptional } from 'class-validator';
-import { Transform } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
+import { BaseTransactionInput } from './base.input';
 
-export class WithdrawInput {
+export class WithdrawInput extends BaseTransactionInput {
   @IsNotEmpty()
+  @Expose()
   credit: number;
-
-  amount: number;
-
-  @IsOptional()
-  @Transform(value => new Date(value))
-  operationDate?: Date
 }

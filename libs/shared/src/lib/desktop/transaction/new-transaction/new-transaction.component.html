@@ -27,6 +27,15 @@
       </nz-form-control>
     </nz-form-item>
 
+    <nz-form-item>
+      <nz-form-label nzSpan="24">Narrative</nz-form-label>
+      <nz-form-control>
+        <nz-input-group>
+          <input formControlName="narrative" type="text" nz-input placeholder="">
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
     <div [ngSwitch]="form.get('operation').value">
 
       <nz-form-item *ngSwitchCase="'WITHDRAW'">

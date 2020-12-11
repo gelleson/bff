@@ -23,7 +23,8 @@
       "@bff/frontend/core": ["libs/frontend/core/src/index.ts"],
       "@bff/interface": ["libs/interface/src/index.ts"],
       "@bff/frontend/ui": ["libs/frontend/ui/src/index.ts"],
-      "@bff/api/shared": ["libs/api/shared/src/index.ts"]
+      "@bff/api/shared": ["libs/api/shared/src/index.ts"],
+      "@bff/api/modules": ["libs/api/modules/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
