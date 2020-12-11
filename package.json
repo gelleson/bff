@@ -54,6 +54,7 @@
     "class-validator": "^0.12.2",
     "localforage": "^1.9.0",
     "moment": "^2.29.1",
+    "nestjsx-automapper": "^3.1.4",
     "ng-zorro-antd": "^10.2.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

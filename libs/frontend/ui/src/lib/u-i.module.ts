@@ -5,6 +5,9 @@ import { BalanceShortComponent } from './overview/balance-short/balance-short.co
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { SubscriptionListComponent } from './subscription/subscription-list/subscription-list.component';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 @NgModule({
   imports: [
@@ -12,11 +15,14 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
     AccountModule,
     NzTypographyModule,
     NzGridModule,
-    NzStatisticModule
+    NzStatisticModule,
+    NzListModule,
+    NzBadgeModule
   ],
-  declarations: [BalanceShortComponent],
+  declarations: [BalanceShortComponent, SubscriptionListComponent],
   exports: [
-    BalanceShortComponent
+    BalanceShortComponent,
+    SubscriptionListComponent
   ]
 })
 export class UIModule {}

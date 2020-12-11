@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/libs/interface',
     '<rootDir>/libs/frontend/finance',
     '<rootDir>/libs/frontend/ui',
+    '<rootDir>/libs/api/shared',
   ],
 };

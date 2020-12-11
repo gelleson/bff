@@ -2,19 +2,30 @@ import { Operation } from '../enums/operation.enum';
 import { Transaction } from '../transaction.entity';
 import { Account } from '../../account/account.entity';
 import { isNumber } from 'util';
+import { Expose } from 'class-transformer';
+import { BaseModel } from '@bff/api/database';
 
-export interface AccountShort {
+export class AccountShort extends BaseModel<AccountShort>{
+  @Expose()
   id: number;
+  @Expose()
   name: string;
 }
 
 export class TransactionOutput {
+  @Expose()
   id: number;
+  @Expose()
   amount: number;
+  @Expose()
   operation: Operation;
+  @Expose()
   transactionTime: Date;
+  @Expose()
   operationDate?: any;
+  @Expose()
   credit?: AccountShort;
+  @Expose()
   debit?: AccountShort;
 
   constructor(transaction: Transaction) {
@@ -31,15 +42,12 @@ export class TransactionOutput {
     return transactions.map(transaction => new TransactionOutput(transaction));
   }
 
-  private getId(account: Account | number): {
-    id: number;
-    name: string;
-  } | undefined {
+  private getId(account: Account | number): AccountShort | undefined {
     if (account instanceof Account && account?.id !== undefined) {
-      return {
+      return new AccountShort({
         id: account.id,
         name: account.name
-      };
+      });
     }
 
     return null;

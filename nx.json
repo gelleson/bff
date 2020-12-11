@@ -50,6 +50,9 @@
     },
     "frontend-ui": {
       "tags": []
+    },
+    "api-shared": {
+      "tags": []
     }
   }
 }

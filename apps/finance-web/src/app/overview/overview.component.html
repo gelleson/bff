@@ -20,10 +20,14 @@
     </nz-space-item>
 
     <nz-space-item>
-      <div nz-row>
+      <div nz-row nzGutter="20">
 
         <div nz-col nzFlex="6">
           <bff-transaction-table [transactions]="transactions"></bff-transaction-table>
+        </div>
+
+        <div nz-col nzFlex="6">
+          <bff-subscription-list ></bff-subscription-list>
         </div>
 
 

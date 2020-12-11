@@ -9,8 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { AccountModule } from './account/account.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { SubscriptionModule } from './subscription/subscription.module';
 import database from './config/database.config';
 import auth from './config/auth.config';
+import { AutomapperModule } from 'nestjsx-automapper';
+import { SharedModule } from '@bff/api/shared';
 
 @Module({
   imports: [
@@ -18,6 +21,8 @@ import auth from './config/auth.config';
     ConfigModule.forRoot({
       load: [database, auth]
     }),
+    AutomapperModule.withMapper(),
+    SharedModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -34,7 +39,8 @@ import auth from './config/auth.config';
     }),
     AuthModule,
     AccountModule,
-    TransactionModule
+    TransactionModule,
+    SubscriptionModule
   ],
   controllers: [AppController],
   providers: [AppService]
