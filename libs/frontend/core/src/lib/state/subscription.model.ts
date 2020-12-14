@@ -1,7 +1,7 @@
 import { ID } from '@datorama/akita';
 import { Expose } from 'class-transformer';
-import { SubscriptionType } from '../../../../../../apps/api/src/app/subscription/enums/subscription-type.enum';
-import { SubscriptionTimeUnit } from '../../../../../../apps/api/src/app/subscription/enums/subscription-time.unit';
+import { SubscriptionType } from '../../../../../api/modules/src/lib/subscription/enums/subscription-type.enum';
+import { SubscriptionTimeUnit } from '../../../../../api/modules/src/lib/subscription/enums/subscription-time.unit';
 
 export interface Subscription {
   id: number;

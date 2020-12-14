@@ -2,16 +2,16 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from '../../../../libs/api/modules/src/lib/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { AuthModule } from './auth/auth.module';
-import { AccountModule } from './account/account.module';
-import { TransactionModule } from './transaction/transaction.module';
+import { AuthModule } from '../../../../libs/api/modules/src/lib/auth/auth.module';
+import { AccountModule } from '../../../../libs/api/modules/src/lib/account/account.module';
+import { TransactionModule } from '../../../../libs/api/modules/src/lib/transaction/transaction.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SubscriptionModule } from './subscription/subscription.module';
-import database from './config/database.config';
-import auth from './config/auth.config';
+import { SubscriptionModule } from '../../../../libs/api/modules/src/lib/subscription/subscription.module';
+import database from '../../../../libs/api/modules/src/lib/config/database.config';
+import auth from '../../../../libs/api/modules/src/lib/config/auth.config';
 import { AutomapperModule } from 'nestjsx-automapper';
 import { SharedModule } from '@bff/api/shared';
 
