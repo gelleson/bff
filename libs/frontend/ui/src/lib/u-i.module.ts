@@ -8,6 +8,17 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { SubscriptionListComponent } from './subscription/subscription-list/subscription-list.component';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NewTransactionComponent } from './transaction/new-transaction/new-transaction.component';
+import { TransactionTableComponent } from './transaction/transaction-table/transaction-table.component';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   imports: [
@@ -17,12 +28,28 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
     NzGridModule,
     NzStatisticModule,
     NzListModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzDrawerModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    NzButtonModule,
+    NzFormModule,
+    NzTableModule,
+    NzPopconfirmModule
   ],
-  declarations: [BalanceShortComponent, SubscriptionListComponent],
+  declarations: [
+    BalanceShortComponent,
+    SubscriptionListComponent,
+    NewTransactionComponent,
+    TransactionTableComponent
+  ],
   exports: [
     BalanceShortComponent,
-    SubscriptionListComponent
+    SubscriptionListComponent,
+    NewTransactionComponent,
+    TransactionTableComponent
   ]
 })
 export class UIModule {}

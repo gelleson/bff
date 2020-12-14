@@ -14,7 +14,6 @@ import { RegistrationComponent } from './forms/registration/registration.compone
 import { AccountListComponent } from './desktop/account/account-list/account-list.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzListModule } from 'ng-zorro-antd/list';
-import { TransactionTableComponent } from './desktop/transaction/transaction-table/transaction-table.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NewAccountComponent } from './desktop/account/new-account/new-account.component';
@@ -23,7 +22,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { EditAccountComponent } from './desktop/account/edit-account/edit-account.component';
-import { NewTransactionComponent } from './desktop/transaction/new-transaction/new-transaction.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
@@ -53,18 +51,14 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     LoginComponent,
     RegistrationComponent,
     AccountListComponent,
-    TransactionTableComponent,
     NewAccountComponent,
     EditAccountComponent,
-    NewTransactionComponent
   ],
   exports: [
     LoginComponent,
     RegistrationComponent,
     AccountListComponent,
-    TransactionTableComponent,
     EditAccountComponent,
-    NewTransactionComponent
   ]
 })
 export class SharedModule {}
