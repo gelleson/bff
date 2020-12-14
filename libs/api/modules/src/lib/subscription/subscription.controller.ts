@@ -3,7 +3,7 @@ import { SubscriptionService } from './subscription.service';
 import { Auth, CurrentUser } from '@bff/api/auth';
 import { SubCreateInput } from './dto/sub-create.input';
 import { User } from '../user/user.entity';
-import { SubscriptionOutput } from './dto/subscription.output';
+import { SubscriptionObject } from './dto/subscription.object';
 import { SubUpdateInput } from './dto/sub-update.input';
 
 @Auth()
@@ -13,7 +13,7 @@ export class SubscriptionController {
   }
 
   @Post()
-  public create(@CurrentUser() user: User, @Body() payload: SubCreateInput): Promise<SubscriptionOutput> {
+  public create(@CurrentUser() user: User, @Body() payload: SubCreateInput): Promise<SubscriptionObject> {
     return this.subscriptionService.create(
       user.id,
       payload

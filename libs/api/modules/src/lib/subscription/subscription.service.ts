@@ -4,8 +4,8 @@ import { Subscription } from './subscription.entity';
 import { Repository } from 'typeorm';
 import { SubCreateInput } from './dto/sub-create.input';
 import { UserService } from '../user/user.service';
-import { SubscriptionOutput } from './dto/subscription.output';
-import { TransactionOutput } from '../transaction/dto/transaction.output';
+import { SubscriptionObject } from './dto/subscription.object';
+import { TransactionObject } from '../transaction';
 import { SubUpdateInput } from './dto/sub-update.input';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class SubscriptionService {
       })
     );
 
-    return SubscriptionOutput.of(sub);
+    return SubscriptionObject.of(sub);
   }
 
   public async isOwner(userId: number, subscriptionId: number): Promise<boolean>{
@@ -49,14 +49,14 @@ export class SubscriptionService {
       }
     });
 
-    return SubscriptionOutput.array(subscriptions);
+    return SubscriptionObject.array(subscriptions);
   }
 
   public async update(subscriptionId: number, input: Partial<SubUpdateInput>) {
     let subscription = await this.subscriptionRepository.findOne(subscriptionId);
     subscription = await this.subscriptionRepository.merge(subscription, input);
 
-    return SubscriptionOutput.of(
+    return SubscriptionObject.of(
       await this.subscriptionRepository.save(subscription)
     );
   }

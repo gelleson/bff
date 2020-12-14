@@ -1,9 +1,8 @@
-import { Operation } from '../enums/operation.enum';
-import { Transaction } from '../transaction.entity';
-import { Account } from '../../account/account.entity';
-import { isNumber } from 'util';
 import { Expose } from 'class-transformer';
 import { BaseModel } from '@bff/api/database';
+import { Operation } from '../enums/operation.enum';
+import { Transaction } from '../transaction.entity';
+import { Account, IAccount } from '../../account';
 
 export class AccountShort extends BaseModel<AccountShort>{
   @Expose()
@@ -12,7 +11,7 @@ export class AccountShort extends BaseModel<AccountShort>{
   name: string;
 }
 
-export class TransactionOutput {
+export class TransactionObject {
   @Expose()
   id: number;
   @Expose()
@@ -42,10 +41,10 @@ export class TransactionOutput {
   }
 
   public static array(transactions: Transaction[]) {
-    return transactions.map(transaction => new TransactionOutput(transaction));
+    return transactions.map(transaction => new TransactionObject(transaction));
   }
 
-  private getId(account: Account | number): AccountShort | undefined {
+  private getId(account: Partial<IAccount> | number): AccountShort | undefined {
     if (account instanceof Account && account?.id !== undefined) {
       return new AccountShort({
         id: account.id,

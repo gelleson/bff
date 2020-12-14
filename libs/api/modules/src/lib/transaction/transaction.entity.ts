@@ -4,6 +4,7 @@ import { Operation } from './enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
 import { User } from '../user/user.entity';
 import { Exclude } from 'class-transformer';
+import { IAccount } from '../account/interface/account.interface';
 
 @Entity({
   name: 'transactions'

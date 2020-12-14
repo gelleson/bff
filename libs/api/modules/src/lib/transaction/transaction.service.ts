@@ -4,11 +4,10 @@ import { Transaction  } from './transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountService } from '../account/account.service';
 import { UserService } from '../user/user.service';
-import { WithdrawInput } from './dto/withdraw.input';
 import { Operation } from './enums/operation.enum';
-import { IncomeInput } from './dto/income.input';
-import { TransferInput } from './dto/transfer.input';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
+import { IncomeInput, TransferInput, WithdrawInput } from './dto';
+import { Account } from '../account';
 
 @Injectable()
 export class TransactionService {
@@ -75,7 +74,7 @@ export class TransactionService {
 
     return this.repository.save(
       new Transaction({
-        credit: account,
+        credit: new Account({ id: account.id }),
         createdBy: user,
         amount: input.amount,
         operation: Operation.WITHDRAW,
@@ -92,7 +91,7 @@ export class TransactionService {
 
     return this.repository.save(
       new Transaction({
-        debit: account,
+        debit: new Account({ id: account.id }),
         createdBy: user,
         amount: input.amount,
         operation: Operation.INCOME,
@@ -111,8 +110,8 @@ export class TransactionService {
 
     return this.repository.save(
       new Transaction({
-        debit: debit,
-        credit: credit,
+        debit: new Account({ id: debit.id }),
+        credit: new Account({ id: credit.id }),
         createdBy: user,
         amount: input.amount,
         operation: Operation.TRANSFER,

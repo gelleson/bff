@@ -23,7 +23,8 @@ export class OverviewComponent implements OnInit {
       .subscribe(accounts => this.accounts = accounts);
 
     this.transactionService.getTransactions(new Date())
-      .subscribe(transactions => this.transactions = transactions.transactions);
+      // @ts-ignore
+      .subscribe(transactions => this.transactions = transactions.data);
 
     this.eventService
       .route('reload')

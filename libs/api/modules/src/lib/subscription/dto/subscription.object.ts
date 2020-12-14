@@ -6,9 +6,10 @@ import { Subscription } from '../subscription.entity';
 import { BaseModel } from '@bff/api/database';
 import { AutoMap } from 'nestjsx-automapper';
 import { Expose } from 'class-transformer';
+import { ISubscription } from '../schema';
 
 
-export class SubscriptionOutput extends BaseModel<SubscriptionOutput> {
+export class SubscriptionObject extends BaseModel<SubscriptionObject> implements ISubscription {
   @Expose()
   id: number;
   @Expose()
@@ -42,13 +43,13 @@ export class SubscriptionOutput extends BaseModel<SubscriptionOutput> {
   @Expose()
   lastSubscription: Date;
 
-  public static of(model: Subscription): SubscriptionOutput {
-    return new SubscriptionOutput({
+  public static of(model: ISubscription): SubscriptionObject {
+    return new SubscriptionObject({
       ...model
     });
   }
 
-  public static array(models: Subscription[]) {
-    return models.map(subscription => SubscriptionOutput.of(subscription));
+  public static array(models: ISubscription[]) {
+    return models.map(subscription => SubscriptionObject.of(subscription));
   }
 }
