@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { TransactionObject } from '@bff/interface';
+import { TransactionObject } from '@bff/api/modules';
 import { EventService, TransactionService } from '@bff/frontend/core';
 
 @Component({
@@ -18,7 +18,6 @@ export class TransactionTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.transactions, 1413);
   }
 
   getTotalAsString() {

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { TransactionObject } from '@bff/interface';
+import { TransactionObject } from '@bff/api/modules';
 import { TransactionService } from '@bff/frontend/core';
 
 @Component({

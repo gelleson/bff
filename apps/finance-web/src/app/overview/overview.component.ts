@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountQuery, AccountService, EventService, TransactionService } from '@bff/frontend/core';
-import { AccountObject, TransactionObject } from '@bff/interface';
+import { IAccount, TransactionObject } from '@bff/api/modules';
 
 @Component({
   selector: 'bff-overview',
@@ -8,7 +8,7 @@ import { AccountObject, TransactionObject } from '@bff/interface';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  accounts: AccountObject[] = [];
+  accounts: IAccount[] = [];
   transactions: TransactionObject[] = [];
   currentTime = new Date();
 
@@ -23,7 +23,6 @@ export class OverviewComponent implements OnInit {
       .subscribe(accounts => this.accounts = accounts);
 
     this.transactionService.getTransactions(new Date())
-      // @ts-ignore
       .subscribe(transactions => this.transactions = transactions.data);
 
     this.eventService
@@ -34,7 +33,7 @@ export class OverviewComponent implements OnInit {
           .subscribe();
 
         this.transactionService.getTransactions(new Date())
-          .subscribe(transactions => this.transactions = transactions.transactions);
+          .subscribe(transactions => this.transactions = transactions.data);
       });
   }
 

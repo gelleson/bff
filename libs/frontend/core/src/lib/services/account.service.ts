@@ -1,7 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from '../tokens';
-import { AccountObject } from '@bff/interface';
+import { IAccount } from '@bff/api/modules';
 import { AccountStore } from '../state';
 import { tap } from 'rxjs/operators';
 
@@ -19,7 +19,7 @@ export class AccountService {
   }
 
   public getAll() {
-    return this.http.get<AccountObject[]>(`${this.baseUrl}/accounts`)
+    return this.http.get<IAccount[]>(`${this.baseUrl}/accounts`)
       .pipe(
         tap(
           accounts => this.accountStore.set(accounts)
@@ -27,8 +27,8 @@ export class AccountService {
       );
   }
 
-  public update(id: number, partial: Partial<AccountObject>) {
-    return this.http.put<AccountObject>(`${this.baseUrl}/accounts/${id}`, partial)
+  public update(id: number, partial: Partial<IAccount>) {
+    return this.http.put<IAccount>(`${this.baseUrl}/accounts/${id}`, partial)
       .pipe(
         tap(
           account => this.accountStore.update(account.id, account)
@@ -36,8 +36,8 @@ export class AccountService {
       );
   }
 
-  public create(partial: Partial<AccountObject>) {
-    return this.http.post<AccountObject>(`${this.baseUrl}/accounts`, partial)
+  public create(partial: Partial<IAccount>) {
+    return this.http.post<IAccount>(`${this.baseUrl}/accounts`, partial)
       .pipe(
         tap(
           account => this.accountStore.add(account)

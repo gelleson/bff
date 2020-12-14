@@ -4,7 +4,6 @@ import { User } from '../user/user.entity';
 import { AccountService } from './account.service';
 import { AccountCreateInput } from './dto/account-create.input';
 import { AccountUpdateInput } from './dto/account-update.input';
-import { AccountObject } from '@bff/interface';
 import { IAccount } from './interface/account.interface';
 
 @Auth()

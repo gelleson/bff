@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountQuery, AccountService } from '@bff/frontend/core';
-import { AccountObject } from '@bff/interface';
+import { IAccount } from '@bff/api/modules';
 
 @Component({
   selector: 'bff-account',
@@ -8,7 +8,7 @@ import { AccountObject } from '@bff/interface';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  accounts: AccountObject[];
+  accounts: IAccount[];
 
   constructor(private accountService: AccountService, private accountQuery: AccountQuery) {
     this.accountService.getAll()

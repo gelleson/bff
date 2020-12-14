@@ -3,7 +3,7 @@ import { NzDrawerComponent } from 'ng-zorro-antd/drawer';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '@bff/frontend/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { AccountObject } from '@bff/interface';
+import { IAccount } from '@bff/api/modules';
 
 @Component({
   selector: 'bff-edit-account',
@@ -16,7 +16,7 @@ export class EditAccountComponent implements OnInit {
   form: FormGroup;
 
   @Input()
-  account!: AccountObject;
+  account!: IAccount;
 
   @ViewChild('drawer')
   drawer: NzDrawerComponent;

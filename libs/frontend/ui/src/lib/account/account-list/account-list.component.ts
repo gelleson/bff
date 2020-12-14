@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AccountObject } from '@bff/interface';
+import { IAccount } from '@bff/api/modules';
 import { AccountService } from '@bff/frontend/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AccountListComponent implements OnInit, OnChanges {
 
   @Input()
-  accounts: AccountObject[] = [];
+  accounts: IAccount[] = [];
 
   @Input()
   loading: boolean;
