@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './forms/login/login.component';
+import { LoginComponent } from '../../../frontend/ui/src/lib/auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -10,7 +10,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterModule } from '@angular/router';
-import { RegistrationComponent } from './forms/registration/registration.component';
+import { RegistrationComponent } from '../../../frontend/ui/src/lib/auth/registration/registration.component';
 import { AccountListComponent } from '../../../frontend/ui/src/lib/account/account-list/account-list.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzListModule } from 'ng-zorro-antd/list';
@@ -48,13 +48,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzDatePickerModule
   ],
   declarations: [
-    LoginComponent,
-    RegistrationComponent,
-
   ],
   exports: [
-    LoginComponent,
-    RegistrationComponent,
+
   ]
 })
 export class SharedModule {}

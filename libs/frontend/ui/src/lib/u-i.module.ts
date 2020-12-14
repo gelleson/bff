@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountModule } from './account/account.module';
 import { BalanceShortComponent } from './overview/balance-short/balance-short.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -19,11 +18,17 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NewAccountComponent } from './account/new-account/new-account.component';
+import { EditAccountComponent } from './account/edit-account/edit-account.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    AccountModule,
     NzTypographyModule,
     NzGridModule,
     NzStatisticModule,
@@ -38,18 +43,31 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzFormModule,
     NzTableModule,
     NzPopconfirmModule,
+    NzMessageModule,
+    RouterModule
+
   ],
   declarations: [
     BalanceShortComponent,
     SubscriptionListComponent,
     NewTransactionComponent,
-    TransactionTableComponent
+    TransactionTableComponent,
+    NewAccountComponent,
+    EditAccountComponent,
+    AccountListComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   exports: [
     BalanceShortComponent,
     SubscriptionListComponent,
     NewTransactionComponent,
-    TransactionTableComponent
+    TransactionTableComponent,
+    NewAccountComponent,
+    EditAccountComponent,
+    AccountListComponent,
+    LoginComponent,
+    RegistrationComponent,
   ]
 })
 export class UIModule {}

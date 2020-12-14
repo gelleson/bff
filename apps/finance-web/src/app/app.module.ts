@@ -17,6 +17,7 @@ import { AuthGuard, BearerInterceptor, CoreModule } from '@bff/frontend/core';
 import { environment } from '../environments/environment';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { UIModule } from '@bff/frontend/ui';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,7 +52,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     CoreModule.forRoot({
       url: environment.api
     }),
-    NzDropDownModule
+    NzDropDownModule,
+    UIModule
   ],
   providers: [
     {
