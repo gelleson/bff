@@ -253,27 +253,6 @@
         }
       }
     },
-    "interface": {
-      "root": "libs/interface",
-      "sourceRoot": "libs/interface/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/interface/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/interface/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "frontend-ui": {
       "projectType": "library",
       "root": "libs/frontend/ui",
