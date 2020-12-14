@@ -18,7 +18,7 @@ export class AppComponent {
 
     accountService
       .getAll()
-      .subscribe(d => console.dir(d, -1))
+      .subscribe()
   }
 
   public logout() {
