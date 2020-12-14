@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
-  HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { SessionQuery } from '@bff/frontend/core';
-import { map } from 'rxjs/operators';
+import { SessionQuery } from '../state';
 
 @Injectable()
 export class BearerInterceptor implements HttpInterceptor {
