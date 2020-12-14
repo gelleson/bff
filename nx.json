@@ -39,9 +39,6 @@
       "tags": [],
       "implicitDependencies": ["finance-web"]
     },
-    "shared": {
-      "tags": []
-    },
     "frontend-core": {
       "tags": []
     },
