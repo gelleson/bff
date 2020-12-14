@@ -5,6 +5,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { SharedModule } from '@bff/shared';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { UIModule } from '@bff/frontend/ui';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CommonModule,
     AccountRoutingModule,
     SharedModule,
-    NzButtonModule
+    NzButtonModule,
+    UIModule
   ]
 })
 export class AccountModule { }

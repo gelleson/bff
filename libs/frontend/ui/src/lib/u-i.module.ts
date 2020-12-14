@@ -37,7 +37,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzButtonModule,
     NzFormModule,
     NzTableModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
   ],
   declarations: [
     BalanceShortComponent,

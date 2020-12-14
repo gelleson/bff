@@ -11,17 +11,17 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterModule } from '@angular/router';
 import { RegistrationComponent } from './forms/registration/registration.component';
-import { AccountListComponent } from './desktop/account/account-list/account-list.component';
+import { AccountListComponent } from '../../../frontend/ui/src/lib/account/account-list/account-list.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { NewAccountComponent } from './desktop/account/new-account/new-account.component';
+import { NewAccountComponent } from '../../../frontend/ui/src/lib/account/new-account/new-account.component';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
-import { EditAccountComponent } from './desktop/account/edit-account/edit-account.component';
+import { EditAccountComponent } from '../../../frontend/ui/src/lib/account/edit-account/edit-account.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
@@ -50,15 +50,11 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
   declarations: [
     LoginComponent,
     RegistrationComponent,
-    AccountListComponent,
-    NewAccountComponent,
-    EditAccountComponent,
+
   ],
   exports: [
     LoginComponent,
     RegistrationComponent,
-    AccountListComponent,
-    EditAccountComponent,
   ]
 })
 export class SharedModule {}
