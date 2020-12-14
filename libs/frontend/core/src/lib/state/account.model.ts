@@ -1,7 +1,6 @@
-import { ID } from '@datorama/akita';
-import { AccountObject } from '@bff/interface';
+import { IAccount } from '@bff/api/modules';
 
-export interface Account extends AccountObject{
+export interface Account extends IAccount {
   id: number;
 }
 

@@ -1,20 +1,8 @@
 import { ID } from '@datorama/akita';
-import { Expose } from 'class-transformer';
-import { SubscriptionType } from '../../../../../api/modules/src/lib/subscription/enums/subscription-type.enum';
-import { SubscriptionTimeUnit } from '../../../../../api/modules/src/lib/subscription/enums/subscription-time.unit';
+import { ISubscription } from '@bff/api/modules';
 
-export interface Subscription {
+export interface Subscription extends ISubscription{
   id: number;
-  name: string;
-  currency: string;
-  since: Date;
-  until?: Date;
-  trialDays?: number;
-  amount: number;
-  type: SubscriptionType;
-  intervalUnit: SubscriptionTimeUnit;
-  isActive: boolean;
-  lastSubscription: Date;
 }
 
 export function createSubscription(params: Partial<Subscription>) {
