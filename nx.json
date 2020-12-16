@@ -55,7 +55,8 @@
       "tags": []
     },
     "mobile-core": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["api-modules"]
     },
     "mobile-shared": {
       "tags": []

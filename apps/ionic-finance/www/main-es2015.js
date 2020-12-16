@@ -1,5 +1,153 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "../../libs/mobile/core/src/index.ts":
+/*!*************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/mobile/core/src/index.ts ***!
+  \*************************************************************************/
+/*! exports provided: MobileCoreModule, AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_mobile_core_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/mobile-core.module */ "../../libs/mobile/core/src/lib/mobile-core.module.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MobileCoreModule", function() { return _lib_mobile_core_module__WEBPACK_IMPORTED_MODULE_0__["MobileCoreModule"]; });
+
+/* harmony import */ var _lib_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/services */ "../../libs/mobile/core/src/lib/services/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return _lib_services__WEBPACK_IMPORTED_MODULE_1__["AuthService"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "../../libs/mobile/core/src/lib/mobile-core.module.ts":
+/*!******************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/mobile/core/src/lib/mobile-core.module.ts ***!
+  \******************************************************************************************/
+/*! exports provided: MobileCoreModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MobileCoreModule", function() { return MobileCoreModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/auth.service */ "../../libs/mobile/core/src/lib/services/auth.service.ts");
+/* harmony import */ var _tokens_base__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tokens/base */ "../../libs/mobile/core/src/lib/tokens/base.ts");
+var MobileCoreModule_1;
+
+
+
+
+
+let MobileCoreModule = MobileCoreModule_1 = class MobileCoreModule {
+    static forRoot(option) {
+        return {
+            ngModule: MobileCoreModule_1,
+            providers: [
+                _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+                {
+                    provide: _tokens_base__WEBPACK_IMPORTED_MODULE_4__["BASE_URL"],
+                    useValue: option.baseUrl
+                }
+            ]
+        };
+    }
+};
+MobileCoreModule = MobileCoreModule_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+        ],
+        providers: [
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+        ]
+    })
+], MobileCoreModule);
+
+
+
+/***/ }),
+
+/***/ "../../libs/mobile/core/src/lib/services/auth.service.ts":
+/*!*********************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/mobile/core/src/lib/services/auth.service.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _tokens_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tokens/base */ "../../libs/mobile/core/src/lib/tokens/base.ts");
+
+
+
+
+let AuthService = class AuthService {
+    constructor(baseUrl, http) {
+        this.baseUrl = baseUrl;
+        this.http = http;
+    }
+    signIn(input) {
+        return this.http.post(`${this.baseUrl}/auth/sign-in`, input);
+    }
+    signUp(input) {
+        return this.http.post(`${this.baseUrl}/auth/sign-up`, input);
+    }
+};
+AuthService.ctorParameters = () => [
+    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_tokens_base__WEBPACK_IMPORTED_MODULE_3__["BASE_URL"],] }] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [String, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], AuthService);
+
+
+
+/***/ }),
+
+/***/ "../../libs/mobile/core/src/lib/services/index.ts":
+/*!**************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/mobile/core/src/lib/services/index.ts ***!
+  \**************************************************************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth.service */ "../../libs/mobile/core/src/lib/services/auth.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]; });
+
+
+
+
+/***/ }),
+
+/***/ "../../libs/mobile/core/src/lib/tokens/base.ts":
+/*!***********************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/mobile/core/src/lib/tokens/base.ts ***!
+  \***********************************************************************************/
+/*! exports provided: BASE_URL */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BASE_URL", function() { return BASE_URL; });
+const BASE_URL = "BASE_URL";
+
+
+/***/ }),
+
 /***/ "../../node_modules/@ionic/core/dist/esm lazy recursive ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$":
 /*!***************************************************************************************************************************************************************************!*\
   !*** /home/gelleson/WebstormProjects/bff/node_modules/@ionic/core/dist/esm lazy ^\.\/.*\.entry\.js$ include: \.entry\.js$ exclude: \.system\.entry\.js$ namespace object ***!
@@ -247,7 +395,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n\n  <ion-tabs>\n    <ion-tab-bar slot=\"bottom\">\n      <ion-tab-button tab=\"home\">\n        <ion-icon name=\"home\"></ion-icon>\n        <ion-label>Home</ion-label>\n      </ion-tab-button>\n    </ion-tab-bar>\n  </ion-tabs>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title>\n\n      <h4 nz-typography class=\"title\">BFF.mobile</h4>\n    </ion-title>\n  </ion-toolbar>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n");
 
 /***/ }),
 
@@ -284,7 +432,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
@@ -321,7 +469,7 @@ AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHBzL2lvbmljLWZpbmFuY2Uvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".title {\n  color: #02ff73;\n  font-weight: bold;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcHMvaW9uaWMtZmluYW5jZS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQTtFQUNFLGNBQUE7RUFDQSxpQkFBQTtBQUxGIiwiZmlsZSI6ImFwcHMvaW9uaWMtZmluYW5jZS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIEFwcCBTdHlsZXNcbi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbi8vIFB1dCBzdHlsZSBydWxlcyBoZXJlIHRoYXQgeW91IHdhbnQgdG8gYXBwbHkgdG8gdGhlIGVudGlyZSBhcHBsaWNhdGlvbi4gVGhlc2Vcbi8vIHN0eWxlcyBhcmUgZm9yIHRoZSBlbnRpcmUgYXBwIGFuZCBub3QganVzdCBvbmUgY29tcG9uZW50LiBBZGRpdGlvbmFsbHksIHRoaXNcbi8vIGZpbGUgY2FuIGhvbGQgU2FzcyBtaXhpbnMsIGZ1bmN0aW9ucywgYW5kIHBsYWNlaG9sZGVyIGNsYXNzZXMgdG8gYmUgaW1wb3J0ZWRcbi8vIGFuZCB1c2VkIHRocm91Z2hvdXQgdGhlIGFwcGxpY2F0aW9uLlxuLnRpdGxlIHtcbiAgY29sb3I6ICMwMmZmNzM7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -335,10 +483,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "../../node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @capacitor/core */ "../../node_modules/@capacitor/core/dist/esm/index.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "../../node_modules/@ionic-native/splash-screen/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "../../node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
 
@@ -399,7 +547,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "../../node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "../../node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
@@ -408,6 +556,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "../../node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var ng_zorro_antd_typography__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ng-zorro-antd/typography */ "../../node_modules/ng-zorro-antd/__ivy_ngcc__/fesm2015/ng-zorro-antd-typography.js");
+/* harmony import */ var _bff_mobile_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @bff/mobile/core */ "../../libs/mobile/core/src/index.ts");
+
+
 
 
 
@@ -423,11 +575,19 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]],
+        imports: [
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+            _bff_mobile_core__WEBPACK_IMPORTED_MODULE_10__["MobileCoreModule"].forRoot({
+                baseUrl: 'http://localhost:3333/api'
+            }),
+            ng_zorro_antd_typography__WEBPACK_IMPORTED_MODULE_9__["NzTypographyModule"]
+        ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
     })
@@ -452,6 +612,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
+    url: 'http://localhost:3333/api'
 };
 /*
  * For easier debugging in development mode, you can import the following file

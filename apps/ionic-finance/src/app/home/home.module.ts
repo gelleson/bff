@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @NgModule({
   imports: [
@@ -14,9 +15,10 @@ import { HomePage } from './home.page';
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage,
-      },
+        component: HomePage
+      }
     ]),
+    NzTypographyModule
   ],
   declarations: [HomePage],
 })

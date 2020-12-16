@@ -18,7 +18,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-toolbar>\n  <ion-title> Ionic Blank </ion-title>\n</ion-toolbar>\n\n<ion-content>\n  <div class=\"ion-padding\">\n    The world is your oyster.\n    <p>\n      If you get lost, the\n      <a target=\"_blank\" rel=\"noopener\" href=\"https://ionicframework.com/docs/\"\n        >docs</a\n      >\n      will be your guide.\n    </p>\n  </div>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-content>\n\n</ion-content>\n";
       /***/
     },
 
@@ -46,7 +46,7 @@
 
       var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
+      "../../node_modules/tslib/tslib.es6.js");
       /* harmony import */
 
 
@@ -83,6 +83,12 @@
       var _home_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ./home.page */
       "./src/app/home/home.page.ts");
+      /* harmony import */
+
+
+      var ng_zorro_antd_typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ng-zorro-antd/typography */
+      "../../node_modules/ng-zorro-antd/__ivy_ngcc__/fesm2015/ng-zorro-antd-typography.js");
 
       var HomePageModule = function HomePageModule() {
         _classCallCheck(this, HomePageModule);
@@ -92,7 +98,7 @@
         imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild([{
           path: '',
           component: _home_page__WEBPACK_IMPORTED_MODULE_6__["HomePage"]
-        }])],
+        }]), ng_zorro_antd_typography__WEBPACK_IMPORTED_MODULE_7__["NzTypographyModule"]],
         declarations: [_home_page__WEBPACK_IMPORTED_MODULE_6__["HomePage"]]
       })], HomePageModule);
       /***/
@@ -142,20 +148,30 @@
 
       var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
+      "../../node_modules/tslib/tslib.es6.js");
       /* harmony import */
 
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
       "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
 
-      var HomePage = function HomePage() {
+
+      var _bff_mobile_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @bff/mobile/core */
+      "../../libs/mobile/core/src/index.ts");
+
+      var HomePage = function HomePage(authService) {
         _classCallCheck(this, HomePage);
+
+        this.authService = authService;
       };
 
       HomePage.ctorParameters = function () {
-        return [];
+        return [{
+          type: _bff_mobile_core__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
+        }];
       };
 
       HomePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -166,7 +182,7 @@
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
         /*! ./home.page.scss */
         "./src/app/home/home.page.scss"))["default"]]
-      }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])], HomePage);
+      }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_bff_mobile_core__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])], HomePage);
       /***/
     }
   }]);
