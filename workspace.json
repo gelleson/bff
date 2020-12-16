@@ -14,7 +14,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -39,7 +41,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/api/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -60,7 +64,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/api/database/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/database/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -81,7 +87,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/api/auth/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/auth/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -184,7 +192,10 @@
               "apps/finance-web/tsconfig.spec.json",
               "apps/finance-web/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/finance-web/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/finance-web/**/*"
+            ]
           }
         },
         "test": {
@@ -217,8 +228,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/finance-web-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/finance-web-e2e/**/*"]
+            "tsConfig": [
+              "apps/finance-web-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/finance-web-e2e/**/*"
+            ]
           }
         }
       }
@@ -236,7 +252,10 @@
               "libs/frontend/core/tsconfig.lib.json",
               "libs/frontend/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/frontend/core/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/core/**/*"
+            ]
           }
         },
         "test": {
@@ -266,7 +285,10 @@
               "libs/frontend/ui/tsconfig.lib.json",
               "libs/frontend/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/frontend/ui/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/ui/**/*"
+            ]
           }
         },
         "test": {
@@ -292,7 +314,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/api/shared/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/shared/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -313,7 +337,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/api/modules/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/modules/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -324,10 +350,169 @@
           }
         }
       }
+    },
+    "ionic-finance": {
+      "root": "apps/ionic-finance/",
+      "sourceRoot": "apps/ionic-finance/src",
+      "projectType": "application",
+      "prefix": "bff",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "apps/ionic-finance/www",
+            "index": "apps/ionic-finance/src/index.html",
+            "main": "apps/ionic-finance/src/main.ts",
+            "polyfills": "apps/ionic-finance/src/polyfills.ts",
+            "tsConfig": "apps/ionic-finance/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/ionic-finance/src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              {
+                "input": "apps/ionic-finance/src/theme/variables.scss"
+              },
+              {
+                "input": "apps/ionic-finance/src/global.scss"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ionic-finance/src/environments/environment.ts",
+                  "with": "apps/ionic-finance/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "ci": {
+              "progress": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ionic-finance:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ionic-finance:build:production"
+            },
+            "ci": {
+              "progress": false
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ionic-finance:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/ionic-finance/src/test.ts",
+            "polyfills": "apps/ionic-finance/src/polyfills.ts",
+            "tsConfig": "apps/ionic-finance/tsconfig.spec.json",
+            "karmaConfig": "apps/ionic-finance/karma.conf.js",
+            "styles": [],
+            "scripts": [],
+            "assets": [
+              {
+                "glob": "favicon.ico",
+                "input": "apps/ionic-finance/src/",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "apps/ionic-finance/src/assets",
+                "output": "/assets"
+              }
+            ]
+          },
+          "configurations": {
+            "ci": {
+              "progress": false,
+              "watch": false
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ionic-finance/tsconfig.app.json",
+              "apps/ionic-finance/tsconfig.spec.json",
+              "apps/ionic-finance/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "ionic-finance:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ionic-finance:build:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "ionic-finance:ionic-cordova-build",
+            "devServerTarget": "ionic-finance:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "ionic-finance:ionic-cordova-build:production",
+              "devServerTarget": "ionic-finance:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/nest"
+    "defaultCollection": "@nstudio/xplat"
   },
   "defaultProject": "api",
   "schematics": {

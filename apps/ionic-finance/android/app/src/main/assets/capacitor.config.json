@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.app",
+  "appName": "finance",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/snap/bin/android-studio"
+}
