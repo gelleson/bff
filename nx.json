@@ -53,6 +53,12 @@
     },
     "ionic-finance": {
       "tags": []
+    },
+    "mobile-core": {
+      "tags": []
+    },
+    "mobile-shared": {
+      "tags": []
     }
   }
 }

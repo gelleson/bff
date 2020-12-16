@@ -14,9 +14,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -41,9 +39,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
@@ -64,9 +60,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/api/database/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/api/database/**/*.ts"]
           }
         },
         "test": {
@@ -87,9 +81,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/api/auth/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/api/auth/**/*.ts"]
           }
         },
         "test": {
@@ -192,10 +184,7 @@
               "apps/finance-web/tsconfig.spec.json",
               "apps/finance-web/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/finance-web/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/finance-web/**/*"]
           }
         },
         "test": {
@@ -228,13 +217,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/finance-web-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/finance-web-e2e/**/*"
-            ]
+            "tsConfig": ["apps/finance-web-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/finance-web-e2e/**/*"]
           }
         }
       }
@@ -252,10 +236,7 @@
               "libs/frontend/core/tsconfig.lib.json",
               "libs/frontend/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/frontend/core/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/frontend/core/**/*"]
           }
         },
         "test": {
@@ -285,10 +266,7 @@
               "libs/frontend/ui/tsconfig.lib.json",
               "libs/frontend/ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/frontend/ui/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/frontend/ui/**/*"]
           }
         },
         "test": {
@@ -314,9 +292,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/api/shared/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/api/shared/**/*.ts"]
           }
         },
         "test": {
@@ -337,9 +313,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/api/modules/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/api/modules/**/*.ts"]
           }
         },
         "test": {
@@ -479,9 +453,7 @@
               "apps/ionic-finance/tsconfig.spec.json",
               "apps/ionic-finance/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "ionic-cordova-build": {
@@ -507,6 +479,66 @@
               "devServerTarget": "ionic-finance:serve:production"
             }
           }
+        }
+      }
+    },
+    "mobile-core": {
+      "projectType": "library",
+      "root": "libs/mobile/core",
+      "sourceRoot": "libs/mobile/core/src",
+      "prefix": "bff",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mobile/core/tsconfig.lib.json",
+              "libs/mobile/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mobile/core/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mobile/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "mobile-shared": {
+      "projectType": "library",
+      "root": "libs/mobile/shared",
+      "sourceRoot": "libs/mobile/shared/src",
+      "prefix": "bff",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mobile/shared/tsconfig.lib.json",
+              "libs/mobile/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mobile/shared/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mobile/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }

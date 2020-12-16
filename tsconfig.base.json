@@ -23,7 +23,9 @@
       "@bff/interface": ["libs/interface/src/index.ts"],
       "@bff/frontend/ui": ["libs/frontend/ui/src/index.ts"],
       "@bff/api/shared": ["libs/api/shared/src/index.ts"],
-      "@bff/api/modules": ["libs/api/modules/src/index.ts"]
+      "@bff/api/modules": ["libs/api/modules/src/index.ts"],
+      "@bff/mobile/core": ["libs/mobile/core/src/index.ts"],
+      "@bff/mobile/shared": ["libs/mobile/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

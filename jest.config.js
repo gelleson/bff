@@ -13,5 +13,7 @@ module.exports = {
     '<rootDir>/libs/frontend/ui',
     '<rootDir>/libs/api/shared',
     '<rootDir>/libs/api/modules',
+    '<rootDir>/libs/mobile/core',
+    '<rootDir>/libs/mobile/shared',
   ],
 };
