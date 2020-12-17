@@ -1,6 +1,7 @@
 import { Expose } from 'class-transformer';
+import { IToken } from '../interface';
 
-export class TokenObject {
+export class TokenObject implements IToken {
   @Expose()
   accessToken: string;
 
