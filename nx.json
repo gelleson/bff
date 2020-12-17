@@ -39,10 +39,10 @@
       "tags": [],
       "implicitDependencies": ["finance-web"]
     },
-    "frontend-core": {
+    "client-core": {
       "tags": []
     },
-    "frontend-ui": {
+    "client-ui": {
       "tags": []
     },
     "api-shared": {

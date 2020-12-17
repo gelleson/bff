@@ -223,18 +223,18 @@
         }
       }
     },
-    "frontend-core": {
+    "client-core": {
       "projectType": "library",
-      "root": "libs/frontend/core",
-      "sourceRoot": "libs/frontend/core/src",
+      "root": "libs/client/core",
+      "sourceRoot": "libs/client/core/src",
       "prefix": "bff",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/frontend/core/tsconfig.lib.json",
-              "libs/frontend/core/tsconfig.spec.json"
+              "libs/client/core/tsconfig.lib.json",
+              "libs/client/core/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**", "!libs/frontend/core/**/*"]
           }
@@ -242,7 +242,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/frontend/core/jest.config.js",
+            "jestConfig": "libs/client/core/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -253,26 +253,26 @@
         }
       }
     },
-    "frontend-ui": {
+    "client-ui": {
       "projectType": "library",
-      "root": "libs/frontend/ui",
-      "sourceRoot": "libs/frontend/ui/src",
+      "root": "libs/client/ui",
+      "sourceRoot": "libs/client/ui/src",
       "prefix": "bff",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/frontend/ui/tsconfig.lib.json",
-              "libs/frontend/ui/tsconfig.spec.json"
+              "libs/client/ui/tsconfig.lib.json",
+              "libs/client/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/frontend/ui/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/client/ui/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/frontend/ui/jest.config.js",
+            "jestConfig": "libs/client/ui/jest.config.js",
             "passWithNoTests": true
           }
         }
