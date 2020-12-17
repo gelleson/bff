@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { MobileCoreModule } from '@bff/mobile/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { CoreModule } from '@bff/frontend/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,10 +23,15 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    AkitaNgDevtools.forRoot(),
     MobileCoreModule.forRoot({
       baseUrl: 'http://localhost:3333/api'
     }),
-    NzTypographyModule
+    CoreModule.forRoot({
+      url: 'http://localhost:3333/api'
+    }),
+    NzTypographyModule,
+    NzDrawerModule
   ],
   providers: [
     StatusBar,

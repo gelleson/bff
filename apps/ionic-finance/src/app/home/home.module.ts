@@ -6,19 +6,23 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { MobileSharedModule } from '@bff/mobile/shared';
+import { UIModule } from '@bff/frontend/ui';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    UIModule,
     RouterModule.forChild([
       {
         path: '',
         component: HomePage
       }
     ]),
-    NzTypographyModule
+    NzTypographyModule,
+    MobileSharedModule
   ],
   declarations: [HomePage],
 })

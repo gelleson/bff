@@ -25,7 +25,8 @@
       "@bff/api/shared": ["libs/api/shared/src/index.ts"],
       "@bff/api/modules": ["libs/api/modules/src/index.ts"],
       "@bff/mobile/core": ["libs/mobile/core/src/index.ts"],
-      "@bff/mobile/shared": ["libs/mobile/shared/src/index.ts"]
+      "@bff/mobile/shared": ["libs/mobile/shared/src/index.ts"],
+      "@bff/style": ["libs/style/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

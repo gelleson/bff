@@ -15,5 +15,6 @@ module.exports = {
     '<rootDir>/libs/api/modules',
     '<rootDir>/libs/mobile/core',
     '<rootDir>/libs/mobile/shared',
+    '<rootDir>/libs/style',
   ],
 };

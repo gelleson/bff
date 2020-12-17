@@ -44,8 +44,7 @@ import { RouterModule } from '@angular/router';
     NzTableModule,
     NzPopconfirmModule,
     NzMessageModule,
-    RouterModule
-
+    RouterModule,
   ],
   declarations: [
     BalanceShortComponent,

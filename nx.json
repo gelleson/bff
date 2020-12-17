@@ -60,6 +60,9 @@
     },
     "mobile-shared": {
       "tags": []
+    },
+    "style": {
+      "tags": []
     }
   }
 }
