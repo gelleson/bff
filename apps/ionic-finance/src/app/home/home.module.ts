@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { MobileSharedModule } from '@bff/mobile/shared';
-import { UIModule } from '@bff/frontend/ui';
+import { UIModule } from '@bff/client/ui';
 
 @NgModule({
   imports: [
@@ -21,8 +20,7 @@ import { UIModule } from '@bff/frontend/ui';
         component: HomePage
       }
     ]),
-    NzTypographyModule,
-    MobileSharedModule
+    NzTypographyModule
   ],
   declarations: [HomePage],
 })

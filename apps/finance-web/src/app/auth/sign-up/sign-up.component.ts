@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { SessionStore } from '@bff/frontend/core';
+import { SessionStore } from '@bff/client/core';
 import { Router } from '@angular/router';
 import { TokenObject } from '../../../../../../libs/api/modules/src/lib/auth/dto/token.object';
 

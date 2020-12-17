@@ -6,7 +6,7 @@ import { AuthComponent } from './auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { UIModule } from '@bff/frontend/ui';
+import { UIModule } from '@bff/client/ui';
 
 
 @NgModule({

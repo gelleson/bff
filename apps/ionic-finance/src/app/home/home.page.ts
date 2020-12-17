@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@bff/mobile/core';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +6,7 @@ import { AuthService } from '@bff/mobile/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
   ngOnInit(): void {

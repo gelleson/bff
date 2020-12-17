@@ -13,11 +13,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { AuthGuard, BearerInterceptor, CoreModule } from '@bff/frontend/core';
+import { AuthGuard, BearerInterceptor, CoreModule } from '@bff/client/core';
 import { environment } from '../environments/environment';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { UIModule } from '@bff/frontend/ui';
+import { UIModule } from '@bff/client/ui';
 
 @NgModule({
   declarations: [AppComponent],

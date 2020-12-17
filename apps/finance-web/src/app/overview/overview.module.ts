@@ -6,7 +6,7 @@ import { OverviewComponent } from './overview.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
-import { UIModule } from '@bff/frontend/ui';
+import { UIModule } from '@bff/client/ui';
 
 
 @NgModule({

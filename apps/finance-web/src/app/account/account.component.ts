@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountQuery, AccountService } from '@bff/frontend/core';
+import { AccountQuery, AccountService } from '@bff/client/core';
 import { IAccount } from '@bff/api/modules';
 
 @Component({

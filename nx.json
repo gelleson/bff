@@ -53,16 +53,6 @@
     },
     "ionic-finance": {
       "tags": []
-    },
-    "mobile-core": {
-      "tags": [],
-      "implicitDependencies": ["api-modules"]
-    },
-    "mobile-shared": {
-      "tags": []
-    },
-    "style": {
-      "tags": []
     }
   }
 }
