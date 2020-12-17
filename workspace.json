@@ -486,7 +486,7 @@
       "projectType": "library",
       "root": "libs/client/shared",
       "sourceRoot": "libs/client/shared/src",
-      "prefix": "bff",
+      "prefix": "bff-shared",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
