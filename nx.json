@@ -53,6 +53,9 @@
     },
     "ionic-finance": {
       "tags": []
+    },
+    "client-shared": {
+      "tags": []
     }
   }
 }

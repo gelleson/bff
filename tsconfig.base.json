@@ -23,7 +23,8 @@
       "@bff/interface": ["libs/interface/src/index.ts"],
       "@bff/client/ui": ["libs/client/ui/src/index.ts"],
       "@bff/api/shared": ["libs/api/shared/src/index.ts"],
-      "@bff/api/modules": ["libs/api/modules/src/index.ts"]
+      "@bff/api/modules": ["libs/api/modules/src/index.ts"],
+      "@bff/client/shared": ["libs/client/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
