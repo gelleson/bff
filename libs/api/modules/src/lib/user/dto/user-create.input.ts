@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty, Matches, MinLength } from 'class-validator';
+import { IUserCreate } from '../interface/user-create.interface';
 
-export class UserCreateInput {
+export class UserCreateInput implements IUserCreate {
   @IsNotEmpty()
   firstName: string;
 
