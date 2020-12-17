@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { BASE_URL } from '../tokens';
+import { BASE_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http';
-import { SubscriptionStore } from '../state/subscription.store';
+import { SubscriptionStore } from '../../state/subscription.store';
 import { tap } from 'rxjs/operators';
-import { Subscription } from '../state/subscription.model';
+import { Subscription } from '../../state/subscription.model';
 
 @Injectable({
   providedIn: 'root'

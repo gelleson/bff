@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { BASE_URL } from '../tokens';
+import { BASE_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http';
 import { PaginationObject } from '@bff/api/shared';
-import { WithdrawInput } from '../dto/withdraw.input';
-import { IncomeInput } from '../dto/income.input';
+import { WithdrawInput } from '../../dto/withdraw.input';
+import { IncomeInput } from '../../dto/income.input';
 import { AccountService } from './account.service';
 import { map, tap } from 'rxjs/operators';
-import { TransferInput } from '../dto/transfer.input';
+import { TransferInput } from '../../dto/transfer.input';
 import { TransactionObject } from '@bff/api/modules';
 
 @Injectable({

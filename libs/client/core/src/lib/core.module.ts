@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountService, TransactionService } from './services';
 import { BASE_URL } from './tokens';
-import { SubscriptionService } from './services/subscription.service';
+import { SubscriptionService } from './services/finance/subscription.service';
 
 @NgModule({
   imports: [CommonModule],

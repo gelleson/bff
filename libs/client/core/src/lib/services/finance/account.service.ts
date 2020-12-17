@@ -1,8 +1,8 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BASE_URL } from '../tokens';
+import { BASE_URL } from '../../tokens';
 import { IAccount } from '@bff/api/modules';
-import { AccountStore } from '../state';
+import { AccountStore } from '../../state';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
