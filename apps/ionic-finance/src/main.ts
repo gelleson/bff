@@ -16,7 +16,7 @@ localForage.config({
   storeName: 'akita-storage'
 });
 
-persistState({ include: ['session'], storage: localForage });
+persistState({ include: ['session', 'account'], storage: localForage });
 
 if (environment.production) {
   enableProdMode();

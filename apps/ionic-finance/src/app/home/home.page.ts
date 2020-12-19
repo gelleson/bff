@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '@bff/client/core';
+import { AccountService, EventService } from '@bff/client/core';
 import { ModalController } from '@ionic/angular';
 import { NewTransactionModalComponent } from './components/new-transaction-modal/new-transaction-modal.component';
 
@@ -9,7 +9,14 @@ import { NewTransactionModalComponent } from './components/new-transaction-modal
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private accountService: AccountService, private modalController: ModalController) {
+  constructor(private accountService: AccountService, private modalController: ModalController,
+              private eventService: EventService) {
+    this.eventService.route('reload')
+      .subscribe(() => {
+        this.accountService
+          .getAll()
+          .subscribe();
+      });
   }
 
   ngOnInit(): void {
