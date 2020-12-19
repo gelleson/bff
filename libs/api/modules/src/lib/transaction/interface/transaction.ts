@@ -3,6 +3,7 @@ import { Operation } from '../enums';
 export interface IAccountShort {
   id: number;
   name: string;
+  currency: string;
 }
 
 export interface ITransaction {

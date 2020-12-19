@@ -3,13 +3,15 @@ import { BaseModel } from '@bff/api/database';
 import { Operation } from '../enums/operation.enum';
 import { Transaction } from '../transaction.entity';
 import { Account, IAccount } from '../../account';
-import { ITransaction } from '../interface';
+import { IAccountShort, ITransaction } from '../interface';
 
-export class AccountShort extends BaseModel<AccountShort>{
+export class AccountShort extends BaseModel<AccountShort> implements IAccountShort{
   @Expose()
   id: number;
   @Expose()
   name: string;
+  @Expose()
+  currency: string;
 }
 
 export class TransactionObject implements ITransaction {
@@ -49,7 +51,8 @@ export class TransactionObject implements ITransaction {
     if (account instanceof Account && account?.id !== undefined) {
       return new AccountShort({
         id: account.id,
-        name: account.name
+        name: account.name,
+        currency: account.currency,
       });
     }
 
