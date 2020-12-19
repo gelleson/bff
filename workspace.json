@@ -124,7 +124,7 @@
             ],
             "styles": [
               "apps/finance-web/src/styles.scss",
-              "apps/finance-web/src/theme.less"
+              "libs/client/ui/src/theme.less"
             ],
             "scripts": []
           },
@@ -362,7 +362,8 @@
               },
               {
                 "input": "apps/ionic-finance/src/global.scss"
-              }
+              },
+              "libs/client/ui/src/theme.less"
             ],
             "scripts": []
           },
