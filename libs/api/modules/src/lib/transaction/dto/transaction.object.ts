@@ -3,6 +3,7 @@ import { BaseModel } from '@bff/api/database';
 import { Operation } from '../enums/operation.enum';
 import { Transaction } from '../transaction.entity';
 import { Account, IAccount } from '../../account';
+import { ITransaction } from '../interface';
 
 export class AccountShort extends BaseModel<AccountShort>{
   @Expose()
@@ -11,7 +12,7 @@ export class AccountShort extends BaseModel<AccountShort>{
   name: string;
 }
 
-export class TransactionObject {
+export class TransactionObject implements ITransaction {
   @Expose()
   id: number;
   @Expose()

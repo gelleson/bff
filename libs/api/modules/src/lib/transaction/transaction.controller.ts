@@ -5,6 +5,7 @@ import { User } from '../user/user.entity';
 import { PageQuery } from './dto/page.query';
 import { PaginationObject } from '@bff/api/shared';
 import { IncomeInput, TransactionObject, TransferInput, WithdrawInput } from './dto';
+import { ITransaction } from '@bff/api/modules';
 
 @Auth()
 @Controller('transactions')
@@ -18,7 +19,7 @@ export class TransactionController {
     @CurrentUser() user: User,
     @Query('accountId') accountId: number,
     @Query() query: PageQuery
-  ) {
+  ): Promise<PaginationObject<ITransaction>> {
 
     if (!accountId) {
       return new PaginationObject(
@@ -31,8 +32,6 @@ export class TransactionController {
         ))
       );
     }
-
-
 
     return new PaginationObject(
       query.getPageNumber(),
@@ -47,21 +46,21 @@ export class TransactionController {
   }
 
   @Post('withdraw')
-  public async withdraw(@CurrentUser() user: User, @Body() payload: WithdrawInput) {
+  public async withdraw(@CurrentUser() user: User, @Body() payload: WithdrawInput): Promise<ITransaction> {
     return new TransactionObject(
       await this.transactionService.withdraw(user.id, payload)
     );
   }
 
   @Post('income')
-  public async income(@CurrentUser() user: User, @Body() payload: IncomeInput) {
+  public async income(@CurrentUser() user: User, @Body() payload: IncomeInput): Promise<ITransaction> {
     return new TransactionObject(
       await this.transactionService.income(user.id, payload)
     );
   }
 
   @Post('transfer')
-  public async transfer(@CurrentUser() user: User, @Body() payload: TransferInput) {
+  public async transfer(@CurrentUser() user: User, @Body() payload: TransferInput): Promise<ITransaction> {
     return new TransactionObject(
       await this.transactionService.transfer(user.id, payload)
     );
