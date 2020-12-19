@@ -12,6 +12,7 @@ import { error } from 'util';
 export class NewTransactionModalComponent implements OnInit {
 
   withdraw: FormGroup;
+  transfer: FormGroup;
   income: FormGroup;
   constructor(
     public accountQuery: AccountQuery,
@@ -30,6 +31,13 @@ export class NewTransactionModalComponent implements OnInit {
     this.income = fb.group({
       amount: [0, [Validators.required, Validators.min(1)]],
       debit: [null, [Validators.required]],
+      narrative: [''],
+      transactionTime: [new Date().toISOString(), [Validators.required]],
+    })
+    this.transfer = fb.group({
+      amount: [0, [Validators.required, Validators.min(1)]],
+      debit: [null, [Validators.required]],
+      credit: [null, [Validators.required]],
       narrative: [''],
       transactionTime: [new Date().toISOString(), [Validators.required]],
     })
@@ -70,6 +78,31 @@ export class NewTransactionModalComponent implements OnInit {
       .subscribe( async (data) => {
         const toast = await this.toastController.create({
           message: 'income created!',
+          duration: 2000,
+          color: 'primary'
+        });
+        await toast.present();
+        this.withdraw.get('amount').reset(0);
+        await this.modalController.dismiss();
+        this.eventService.dispatch('reload', undefined);
+      }, async (err) => {
+        const toast = await this.toastController.create({
+          message: err.message,
+          duration: 2000,
+          color: 'danger'
+        });
+        await toast.present();
+        this.withdraw.get('amount').reset(0);
+      } )
+  }
+
+  public transferSubmit() {
+    this.transactionService.transfer(
+      this.transfer.getRawValue()
+    )
+      .subscribe( async (data) => {
+        const toast = await this.toastController.create({
+          message: 'transfer created!',
           duration: 2000,
           color: 'primary'
         });
