@@ -8,6 +8,8 @@ import { HomePage } from './home.page';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { UIModule } from '@bff/client/ui';
 import { ClientSharedModule } from '@bff/client/shared';
+import { TransactionOverviewComponent } from './components/transaction-overview/transaction-overview.component';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 @NgModule({
   imports: [
@@ -22,8 +24,9 @@ import { ClientSharedModule } from '@bff/client/shared';
       }
     ]),
     NzTypographyModule,
-    ClientSharedModule
+    ClientSharedModule,
+    NzCardModule
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, TransactionOverviewComponent],
 })
 export class HomePageModule {}

@@ -26,6 +26,9 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { RouterModule } from '@angular/router';
 import { AccountCardListComponent } from './account/account-card-list/account-card-list.component';
+import { TransactionItemComponent } from './transaction/transaction-item/transaction-item.component';
+import { ClientSharedModule } from '@bff/client/shared';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 @NgModule({
   imports: [
@@ -46,6 +49,8 @@ import { AccountCardListComponent } from './account/account-card-list/account-ca
     NzPopconfirmModule,
     NzMessageModule,
     RouterModule,
+    ClientSharedModule,
+    NzCardModule
   ],
   declarations: [
     BalanceShortComponent,
@@ -58,6 +63,7 @@ import { AccountCardListComponent } from './account/account-card-list/account-ca
     LoginComponent,
     RegistrationComponent,
     AccountCardListComponent,
+    TransactionItemComponent,
   ],
   exports: [
     BalanceShortComponent,
@@ -69,7 +75,8 @@ import { AccountCardListComponent } from './account/account-card-list/account-ca
     AccountListComponent,
     LoginComponent,
     RegistrationComponent,
-    AccountCardListComponent
+    AccountCardListComponent,
+    TransactionItemComponent
   ]
 })
 export class UIModule {}

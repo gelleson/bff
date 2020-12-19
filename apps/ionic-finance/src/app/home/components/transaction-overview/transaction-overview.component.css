@@ -1,0 +1,9 @@
+.transaction {
+  margin-bottom:  10px;
+  width: 100%;
+}
+
+.container {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}

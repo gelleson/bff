@@ -1,0 +1,26 @@
+<div nz-row class="container card">
+  <span nz-col nz-row nzSpan="12">
+    <span class="sub-title" nz-typography [ngSwitch]="transaction.operation" nz-col nzSpan="24">
+      <ng-container *ngSwitchCase="'WITHDRAW'">
+        {{ transaction.credit.name }}
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'INCOME'">
+        {{ transaction.debit.name }}
+      </ng-container>
+    </span>
+
+    <span class="description" nz-typography nz-col nzSpan="24">
+      {{ transaction.transactionTime | date }}
+    </span>
+  </span>
+
+  <div nz-col nzSpan="12" class="reverse" [ngSwitch]="transaction.operation">
+    <span class="withdraw" *ngSwitchCase="'WITHDRAW'">
+      -{{transaction.amount}} {{ transaction.credit.currency }}
+    </span>
+    <span class="income" *ngSwitchCase="'INCOME'">
+      {{transaction.amount}} {{ transaction.debit.currency }}
+    </span>
+  </div>
+</div>

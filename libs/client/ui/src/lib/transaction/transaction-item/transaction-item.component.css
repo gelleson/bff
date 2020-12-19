@@ -1,0 +1,41 @@
+.container {
+  width: 100% !important;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.operation {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.card {
+  border: 1px solid #f0f0f0;
+}
+
+.description {
+  color: #a2a4ab;
+}
+
+.reverse {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.income {
+  color: #02ff73;
+  opacity: 0.8;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.withdraw {
+  color: #ff1a1a;
+  font-weight: bold;
+  opacity: 0.8;
+
+  padding-top: 10px;
+}
