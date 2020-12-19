@@ -8,6 +8,10 @@
       <ng-container *ngSwitchCase="'INCOME'">
         {{ transaction.debit.name }}
       </ng-container>
+
+      <ng-container *ngSwitchCase="'TRANSFER'">
+        {{ transaction.credit.name }} transfer to {{ transaction.debit.name }}
+      </ng-container>
     </span>
 
     <span class="description" nz-typography nz-col nzSpan="24">
@@ -20,6 +24,10 @@
       -{{transaction.amount}} {{ transaction.credit.currency }}
     </span>
     <span class="income" *ngSwitchCase="'INCOME'">
+      {{transaction.amount}} {{ transaction.debit.currency }}
+    </span>
+
+    <span *ngSwitchCase="'TRANSFER'">
       {{transaction.amount}} {{ transaction.debit.currency }}
     </span>
   </div>
