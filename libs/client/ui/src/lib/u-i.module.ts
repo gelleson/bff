@@ -29,6 +29,7 @@ import { AccountCardListComponent } from './account/account-card-list/account-ca
 import { TransactionItemComponent } from './transaction/transaction-item/transaction-item.component';
 import { ClientSharedModule } from '@bff/client/shared';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzMessageModule,
     RouterModule,
     ClientSharedModule,
-    NzCardModule
+    NzCardModule,
+    IonicModule
   ],
   declarations: [
     BalanceShortComponent,
