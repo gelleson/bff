@@ -17,7 +17,6 @@ export class BaseTransactionInput {
   narrative?: string;
 
   @IsOptional()
-  @IsNumber()
   @Expose()
   categoryId?: number;
 }

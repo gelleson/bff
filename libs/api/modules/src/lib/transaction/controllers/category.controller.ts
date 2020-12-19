@@ -1,9 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CategoryService } from '../services';
-import { CurrentUser } from '@bff/api/auth';
+import { Auth, CurrentUser } from '@bff/api/auth';
 import { User } from '../../user/user.entity';
 import { CategoryCreateInput } from '../dto/category-create.input';
 
+@Auth()
 @Controller('categories')
 export class CategoryController {
   constructor(private categoryService: CategoryService) {

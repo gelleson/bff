@@ -1,4 +1,4 @@
-import { Operation } from '../enums';
+import { ICategoryShort } from './category';
 
 export interface IAccountShort {
   id: number;
@@ -15,4 +15,5 @@ export interface ITransaction {
   credit?: IAccountShort;
   debit?: IAccountShort;
   narrative?: string;
+  category?: ICategoryShort;
 }

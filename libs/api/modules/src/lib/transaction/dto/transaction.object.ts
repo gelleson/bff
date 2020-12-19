@@ -3,7 +3,8 @@ import { BaseModel } from '@bff/api/database';
 import { Operation } from '../enums/operation.enum';
 import { Transaction } from '../entities/transaction.entity';
 import { Account, IAccount } from '../../account';
-import { IAccountShort, ITransaction } from '../interface';
+import { IAccountShort, ICategoryShort, ITransaction } from '../interface';
+import { Category } from '../entities/category.entity';
 
 export class AccountShort extends BaseModel<AccountShort> implements IAccountShort{
   @Expose()
@@ -12,6 +13,15 @@ export class AccountShort extends BaseModel<AccountShort> implements IAccountSho
   name: string;
   @Expose()
   currency: string;
+}
+
+export class CategoryShort extends BaseModel<CategoryShort> implements ICategoryShort {
+  @Expose()
+  id: number;
+  @Expose()
+  name: string;
+  @Expose()
+  isGlobal: boolean;
 }
 
 export class TransactionObject implements ITransaction {
@@ -31,6 +41,8 @@ export class TransactionObject implements ITransaction {
   debit?: AccountShort;
   @Expose()
   narrative?: string;
+  @Expose()
+  category?: ICategoryShort;
 
   constructor(transaction: Transaction) {
     this.id = transaction.id;
@@ -41,6 +53,19 @@ export class TransactionObject implements ITransaction {
     this.credit = this.getId(transaction.credit);
     this.debit = this.getId(transaction.debit);
     this.narrative = transaction.narrative;
+    this.category = this.getCategoryShort(transaction.category);
+  }
+
+  private getCategoryShort(category: Category | undefined): ICategoryShort | undefined {
+    if (!category) {
+      return undefined;
+    }
+
+    return new CategoryShort({
+        id: category.id,
+        name: category.name,
+        isGlobal: category.isGlobal,
+      })
   }
 
   public static array(transactions: Transaction[]) {

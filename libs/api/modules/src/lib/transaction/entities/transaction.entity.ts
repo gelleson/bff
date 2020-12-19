@@ -4,7 +4,6 @@ import { Operation } from '../enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
 import { User } from '../../user/user.entity';
 import { Exclude } from 'class-transformer';
-import { IAccount } from '../../account/interface/account.interface';
 import { Category } from './category.entity';
 
 @Entity({
@@ -57,6 +56,7 @@ export class Transaction extends BaseModel<Transaction>{
   @ManyToOne(() => Category, {
     onDelete: 'CASCADE',
     nullable: true,
+    eager: true,
   })
   @JoinColumn()
   category?: Category;
