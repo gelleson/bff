@@ -7,3 +7,6 @@ export { AccountState, AccountStore } from './account.store';
 export * from './subscription.query';
 export * from './subscription.model';
 export * from './subscription.store';
+export * from './category.model';
+export * from './category.query';
+export * from './category.store';
