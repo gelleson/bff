@@ -25,6 +25,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { RouterModule } from '@angular/router';
+import { AccountCardListComponent } from './account/account-card-list/account-card-list.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { RouterModule } from '@angular/router';
     AccountListComponent,
     LoginComponent,
     RegistrationComponent,
+    AccountCardListComponent,
   ],
   exports: [
     BalanceShortComponent,
