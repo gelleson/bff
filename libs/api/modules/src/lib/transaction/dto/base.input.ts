@@ -1,4 +1,4 @@
-import { IsDate, IsOptional, IsPositive } from 'class-validator';
+import { IsDate, IsNumber, IsOptional, IsPositive } from 'class-validator';
 import { Expose, Transform } from 'class-transformer';
 
 export class BaseTransactionInput {
@@ -15,4 +15,8 @@ export class BaseTransactionInput {
   @IsOptional()
   @Expose()
   narrative?: string;
+
+  @IsOptional()
+  @Expose()
+  categoryId?: number;
 }

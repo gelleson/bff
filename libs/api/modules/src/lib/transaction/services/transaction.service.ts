@@ -1,20 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { Connection, Equal, FindManyOptions, Repository } from 'typeorm';
-import { Transaction  } from './transaction.entity';
+import { Transaction  } from '../entities/transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AccountService } from '../account/account.service';
-import { UserService } from '../user/user.service';
-import { Operation } from './enums/operation.enum';
+import { AccountService } from '../../account/account.service';
+import { UserService } from '../../user/user.service';
+import { Operation } from '../enums/operation.enum';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
-import { IncomeInput, TransferInput, WithdrawInput } from './dto';
-import { Account } from '../account';
+import { IncomeInput, TransferInput, WithdrawInput } from '../dto';
+import { Account } from '../../account';
+import { CategoryService } from './category.service';
+import { Category } from '../entities/category.entity';
 
 @Injectable()
 export class TransactionService {
   constructor(@InjectRepository(Transaction) private repository: Repository<Transaction>,
               private accountService: AccountService,
               private userService: UserService,
-              private connection: Connection
+              private categoryService: CategoryService,
   ) {
   }
 
@@ -72,11 +74,18 @@ export class TransactionService {
     const user = await this.userService.findById(userId);
     const account = await this.accountService.subBalance(input.credit, input.amount);
 
+    let category: Category;
+
+    if (input.categoryId) {
+      category = await this.categoryService.findOrFail(input.categoryId);
+    }
+
     return this.repository.save(
       new Transaction({
         credit: new Account({ id: account.id }),
         createdBy: user,
         amount: input.amount,
+        category: category,
         operation: Operation.WITHDRAW,
         operationDate: input.operationDate ? input.operationDate : new Date(),
         transactionTime: input.operationDate ? input.operationDate : new Date()
@@ -89,11 +98,18 @@ export class TransactionService {
     const user = await this.userService.findById(userId);
     const account = await this.accountService.addBalance(input.debit, input.amount);
 
+    let category: Category;
+
+    if (input.categoryId) {
+      category = await this.categoryService.findOrFail(input.categoryId);
+    }
+
     return this.repository.save(
       new Transaction({
         debit: new Account({ id: account.id }),
         createdBy: user,
         amount: input.amount,
+        category: category,
         operation: Operation.INCOME,
         operationDate: input.operationDate ? input.operationDate : new Date(),
         transactionTime: input.operationDate ? input.operationDate : new Date()
@@ -108,11 +124,18 @@ export class TransactionService {
     const debit = await this.accountService.addBalance(input.debit, input.amount);
     const credit = await this.accountService.subBalance(input.credit, input.amount);
 
+    let category: Category;
+
+    if (input.categoryId) {
+      category = await this.categoryService.findOrFail(input.categoryId);
+    }
+
     return this.repository.save(
       new Transaction({
         debit: new Account({ id: debit.id }),
         credit: new Account({ id: credit.id }),
         createdBy: user,
+        category: category,
         amount: input.amount,
         operation: Operation.TRANSFER,
         operationDate: input.operationDate ? input.operationDate : new Date(),

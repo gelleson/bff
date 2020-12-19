@@ -137,7 +137,7 @@
   },
   "akitaCli": {
     "template": "angular",
-    "basePath": "./libs/frontend/core/src/lib/"
+    "basePath": "./libs/client/core/src/lib/"
   },
   "xplat": {
     "prefix": "bff",

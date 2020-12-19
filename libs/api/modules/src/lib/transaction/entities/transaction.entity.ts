@@ -1,10 +1,10 @@
 import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Account } from '../account/account.entity';
-import { Operation } from './enums/operation.enum';
+import { Account } from '../../account/account.entity';
+import { Operation } from '../enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
-import { User } from '../user/user.entity';
+import { User } from '../../user/user.entity';
 import { Exclude } from 'class-transformer';
-import { IAccount } from '../account/interface/account.interface';
+import { Category } from './category.entity';
 
 @Entity({
   name: 'transactions'
@@ -52,6 +52,14 @@ export class Transaction extends BaseModel<Transaction>{
     nullable: true
   })
   narrative?: string;
+
+  @ManyToOne(() => Category, {
+    onDelete: 'CASCADE',
+    nullable: true,
+    eager: true,
+  })
+  @JoinColumn()
+  category?: Category;
 
   @Column('date')
   operationDate: Date;
