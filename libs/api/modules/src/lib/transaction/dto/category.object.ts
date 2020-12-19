@@ -1,5 +1,5 @@
 import { BaseModel } from '@bff/api/database';
-import { ICategory } from '../interface/ICategory';
+import { ICategory } from '../interface/category';
 import { Expose } from 'class-transformer';
 
 export class CategoryObject extends BaseModel<CategoryObject> implements ICategory {
