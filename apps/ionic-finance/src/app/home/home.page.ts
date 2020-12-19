@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '@bff/client/core';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor() {
+  constructor(private accountService: AccountService) {
   }
 
   ngOnInit(): void {
-    console.log(12);
+    this.accountService
+      .getAll()
+      .subscribe();
   }
 
 }

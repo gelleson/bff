@@ -1,1 +1,13 @@
-<p>account-card-list works!</p>
+<h5 nz-typography>Accounts</h5>
+
+<div class="container">
+
+  <div class="container-item" *ngFor="let account of accountQuery.selectAll() | async">
+    <h5 nz-typography>{{account.name}}</h5>
+    <span>{{account.balance| currency:account.currency:'symbol-narrow'}}</span>
+  </div>
+
+  <div class="container-empty">
+    <h5 nz-typography>+</h5>
+  </div>
+</div>

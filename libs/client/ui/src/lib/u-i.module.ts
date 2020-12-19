@@ -69,6 +69,7 @@ import { AccountCardListComponent } from './account/account-card-list/account-ca
     AccountListComponent,
     LoginComponent,
     RegistrationComponent,
+    AccountCardListComponent
   ]
 })
 export class UIModule {}

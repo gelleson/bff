@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountQuery } from '@bff/client/core';
 
 @Component({
   selector: 'bff-account-card-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountCardListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public accountQuery: AccountQuery) { }
 
   ngOnInit(): void {
   }
