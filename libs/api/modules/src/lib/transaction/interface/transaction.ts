@@ -1,4 +1,4 @@
-import { Operation } from '@bff/api/modules';
+import { Operation } from '../enums';
 
 export interface IAccountShort {
   id: number;
