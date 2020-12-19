@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { BaseModel } from '@bff/api/database';
 import { Operation } from '../enums/operation.enum';
-import { Transaction } from '../transaction.entity';
+import { Transaction } from '../entities/transaction.entity';
 import { Account, IAccount } from '../../account';
 import { IAccountShort, ITransaction } from '../interface';
 

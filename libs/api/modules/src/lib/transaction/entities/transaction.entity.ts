@@ -1,10 +1,10 @@
 import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Account } from '../account/account.entity';
-import { Operation } from './enums/operation.enum';
+import { Account } from '../../account/account.entity';
+import { Operation } from '../enums/operation.enum';
 import { BaseModel } from '@bff/api/database';
-import { User } from '../user/user.entity';
+import { User } from '../../user/user.entity';
 import { Exclude } from 'class-transformer';
-import { IAccount } from '../account/interface/account.interface';
+import { IAccount } from '../../account/interface/account.interface';
 
 @Entity({
   name: 'transactions'

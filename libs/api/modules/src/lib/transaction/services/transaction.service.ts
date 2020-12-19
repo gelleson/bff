@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Connection, Equal, FindManyOptions, Repository } from 'typeorm';
-import { Transaction  } from './transaction.entity';
+import { Transaction  } from '../entities/transaction.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AccountService } from '../account/account.service';
-import { UserService } from '../user/user.service';
-import { Operation } from './enums/operation.enum';
+import { AccountService } from '../../account/account.service';
+import { UserService } from '../../user/user.service';
+import { Operation } from '../enums/operation.enum';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
-import { IncomeInput, TransferInput, WithdrawInput } from './dto';
-import { Account } from '../account';
+import { IncomeInput, TransferInput, WithdrawInput } from '../dto';
+import { Account } from '../../account';
 
 @Injectable()
 export class TransactionService {
