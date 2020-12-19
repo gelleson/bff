@@ -4,6 +4,7 @@
 
   <div class="container-item" *ngFor="let account of accountQuery.selectAll() | async">
     <h5 nz-typography>{{account.name}}</h5>
+    <h6 nz-typography>{{account.currency}}</h6>
     <span>{{account.balance| currency:account.currency:'symbol-narrow'}}</span>
   </div>
 
