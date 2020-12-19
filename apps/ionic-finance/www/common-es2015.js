@@ -1,5 +1,116 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
+/***/ "../../libs/client/shared/src/index.ts":
+/*!***************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/client/shared/src/index.ts ***!
+  \***************************************************************************/
+/*! exports provided: ClientSharedModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_client_shared_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/client-shared.module */ "../../libs/client/shared/src/lib/client-shared.module.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ClientSharedModule", function() { return _lib_client_shared_module__WEBPACK_IMPORTED_MODULE_0__["ClientSharedModule"]; });
+
+
+
+
+/***/ }),
+
+/***/ "../../libs/client/shared/src/lib/client-shared.module.ts":
+/*!**********************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/client/shared/src/lib/client-shared.module.ts ***!
+  \**********************************************************************************************/
+/*! exports provided: ClientSharedModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientSharedModule", function() { return ClientSharedModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _style_padding_padding_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style/padding/padding.component */ "../../libs/client/shared/src/lib/style/padding/padding.component.ts");
+
+
+
+
+let ClientSharedModule = class ClientSharedModule {
+};
+ClientSharedModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+        declarations: [_style_padding_padding_component__WEBPACK_IMPORTED_MODULE_3__["PaddingComponent"]],
+        exports: [
+            _style_padding_padding_component__WEBPACK_IMPORTED_MODULE_3__["PaddingComponent"],
+        ]
+    })
+], ClientSharedModule);
+
+
+
+/***/ }),
+
+/***/ "../../libs/client/shared/src/lib/style/padding/padding.component.css":
+/*!**********************************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/client/shared/src/lib/style/padding/padding.component.css ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".padding {\n  padding: 20px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxpYnMvY2xpZW50L3NoYXJlZC9zcmMvbGliL3N0eWxlL3BhZGRpbmcvcGFkZGluZy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtBQUNmIiwiZmlsZSI6ImxpYnMvY2xpZW50L3NoYXJlZC9zcmMvbGliL3N0eWxlL3BhZGRpbmcvcGFkZGluZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBhZGRpbmcge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "../../libs/client/shared/src/lib/style/padding/padding.component.ts":
+/*!*********************************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/libs/client/shared/src/lib/style/padding/padding.component.ts ***!
+  \*********************************************************************************************************/
+/*! exports provided: PaddingComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaddingComponent", function() { return PaddingComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let PaddingComponent = class PaddingComponent {
+    constructor() {
+        this.left = '24px';
+        this.right = '24px';
+        this.top = '24px';
+        this.bottom = '24px';
+    }
+    ngOnInit() {
+    }
+    get padding() {
+        return `${this.top} ${this.right} ${this.bottom} ${this.left}`;
+    }
+};
+PaddingComponent.ctorParameters = () => [];
+PaddingComponent.propDecorators = {
+    left: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    right: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    top: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    bottom: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
+PaddingComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'bff-shared-padding',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./padding.component.html */ "../../node_modules/raw-loader/dist/cjs.js!../../libs/client/shared/src/lib/style/padding/padding.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./padding.component.css */ "../../libs/client/shared/src/lib/style/padding/padding.component.css")).default]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])
+], PaddingComponent);
+
+
+
+/***/ }),
+
 /***/ "../../node_modules/@ionic/core/dist/esm/button-active-5da929d4.js":
 /*!*******************************************************************************************************!*\
   !*** /home/gelleson/WebstormProjects/bff/node_modules/@ionic/core/dist/esm/button-active-5da929d4.js ***!
@@ -431,6 +542,19 @@ const openURL = async (url, ev, direction, animation) => {
 
 
 
+
+/***/ }),
+
+/***/ "../../node_modules/raw-loader/dist/cjs.js!../../libs/client/shared/src/lib/style/padding/padding.component.html":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** /home/gelleson/WebstormProjects/bff/node_modules/raw-loader/dist/cjs.js!/home/gelleson/WebstormProjects/bff/libs/client/shared/src/lib/style/padding/padding.component.html ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div  [style.padding]=\"padding\">\n  <ng-content>\n\n  </ng-content>\n</div>\n");
 
 /***/ })
 
