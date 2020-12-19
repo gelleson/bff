@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountQuery, EventService, TransactionService } from '@bff/client/core';
+import { AccountQuery, CategoryQuery, CategoryService, EventService, TransactionService } from '@bff/client/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { error } from 'util';
@@ -20,17 +20,21 @@ export class NewTransactionModalComponent implements OnInit {
     private toastController: ToastController,
     private eventService: EventService,
     private modalController: ModalController,
+    private categoryQuery: CategoryQuery,
+    private categoryService: CategoryService,
     fb: FormBuilder
   ) {
     this.withdraw = fb.group({
       amount: [0, [Validators.required, Validators.min(1)]],
       credit: [null, [Validators.required]],
+      categoryId: [null],
       narrative: [''],
       transactionTime: [new Date().toISOString(), [Validators.required]],
     });
     this.income = fb.group({
       amount: [0, [Validators.required, Validators.min(1)]],
       debit: [null, [Validators.required]],
+      categoryId: [null],
       narrative: [''],
       transactionTime: [new Date().toISOString(), [Validators.required]],
     })
@@ -38,12 +42,16 @@ export class NewTransactionModalComponent implements OnInit {
       amount: [0, [Validators.required, Validators.min(1)]],
       debit: [null, [Validators.required]],
       credit: [null, [Validators.required]],
+      categoryId: [null],
       narrative: [''],
       transactionTime: [new Date().toISOString(), [Validators.required]],
     })
   }
 
   ngOnInit(): void {
+    this.categoryService
+      .getAll()
+      .subscribe();
   }
 
   public withdrawSubmit() {

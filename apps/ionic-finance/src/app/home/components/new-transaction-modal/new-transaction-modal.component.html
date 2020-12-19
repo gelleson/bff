@@ -19,6 +19,15 @@
         </ion-item>
 
         <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select formControlName="categoryId" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="category.id" *ngFor="let category of categoryQuery.selectAll() | async">
+              {{ category.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
           <ion-label position="stacked">Narrative</ion-label>
           <ion-input type="textarea"></ion-input>
         </ion-item>
@@ -43,6 +52,15 @@
           <ion-select formControlName="debit" okText="Okay" cancelText="Dismiss">
             <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
               {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select formControlName="categoryId" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="category.id" *ngFor="let category of categoryQuery.selectAll() | async">
+              {{ category.name }}
             </ion-select-option>
           </ion-select>
         </ion-item>
@@ -81,6 +99,15 @@
           <ion-select formControlName="debit" okText="Okay" cancelText="Dismiss">
             <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
               {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select formControlName="categoryId" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="category.id" *ngFor="let category of categoryQuery.selectAll() | async">
+              {{ category.name }}
             </ion-select-option>
           </ion-select>
         </ion-item>
