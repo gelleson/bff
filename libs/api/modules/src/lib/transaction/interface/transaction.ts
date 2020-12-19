@@ -1,4 +1,4 @@
-import { ICategoryShort } from './category';
+import { ICategoryShort } from './ICategory';
 
 export interface IAccountShort {
   id: number;

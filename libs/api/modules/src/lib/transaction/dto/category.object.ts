@@ -1,8 +1,8 @@
 import { BaseModel } from '@bff/api/database';
-import { Category } from '../interface/category';
+import { ICategory } from '../interface/ICategory';
 import { Expose } from 'class-transformer';
 
-export class CategoryObject extends BaseModel<CategoryObject> implements Category {
+export class CategoryObject extends BaseModel<CategoryObject> implements ICategory {
   @Expose()
   description?: string;
   @Expose()
