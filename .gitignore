@@ -7,7 +7,7 @@
 **/.gradle/
 **/.idea/
 **/node_modules/
-
+**/www/
 **/capacitor-cordova-android-plugins/
 # Built application files
 *.apk
