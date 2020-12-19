@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { BearerInterceptor, CoreModule } from '@bff/client/core';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,7 @@ import { BearerInterceptor, CoreModule } from '@bff/client/core';
     HttpClientModule,
     AkitaNgDevtools.forRoot(),
     CoreModule.forRoot({
-      url: 'http://localhost:3333/api'
+      url: environment.url
     }),
     NzTypographyModule,
     NzDrawerModule
