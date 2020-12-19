@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '@bff/client/core';
+import { ModalController } from '@ionic/angular';
+import { NewTransactionModalComponent } from './components/new-transaction-modal/new-transaction-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,7 @@ import { AccountService } from '@bff/client/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private modalController: ModalController) {
   }
 
   ngOnInit(): void {
@@ -16,4 +18,11 @@ export class HomePage implements OnInit {
       .subscribe();
   }
 
+  public async openModal() {
+    const modal = await this.modalController.create({
+      component: NewTransactionModalComponent,
+      swipeToClose: true,
+    })
+    await modal.present();
+  }
 }
