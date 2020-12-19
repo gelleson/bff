@@ -1,0 +1,102 @@
+<bff-shared-padding>
+  <h4 nz-typography>New transaction</h4>
+
+  <nz-tabset>
+    <nz-tab nzTitle="Withdraw">
+      <form [formGroup]="withdraw">
+        <ion-item>
+          <ion-label position="stacked">Amount</ion-label>
+          <ion-input formControlName="amount" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Credit</ion-label>
+          <ion-select formControlName="credit" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
+              {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Narrative</ion-label>
+          <ion-input type="textarea"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD, HH:mm:ss" min="2005" max="2020" formControlName="transactionTime"></ion-datetime>
+        </ion-item>
+
+        <ion-button (click)="withdrawSubmit()" [disabled]="!withdraw.valid" expand="full" fill="clear">Save</ion-button>
+      </form>
+    </nz-tab>
+    <nz-tab nzTitle="Income">
+      <form [formGroup]="income">
+        <ion-item>
+          <ion-label position="stacked">Amount</ion-label>
+          <ion-input formControlName="amount" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Debit</ion-label>
+          <ion-select formControlName="debit" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
+              {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Narrative</ion-label>
+          <ion-input type="textarea"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD, HH:mm:ss" min="2005" max="2020" formControlName="transactionTime"></ion-datetime>
+        </ion-item>
+
+        <ion-button (click)="incomeSubmit()" [disabled]="!income.valid" expand="full" fill="clear">Save</ion-button>
+      </form>
+    </nz-tab>
+    <nz-tab nzTitle="Transfer">
+      <form [formGroup]="transfer">
+        <ion-item>
+          <ion-label position="stacked">Amount</ion-label>
+          <ion-input formControlName="amount" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Credit</ion-label>
+          <ion-select formControlName="credit" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
+              {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Debit</ion-label>
+          <ion-select formControlName="debit" okText="Okay" cancelText="Dismiss">
+            <ion-select-option [value]="account.id" *ngFor="let account of accountQuery.selectAll() | async">
+              {{ account.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Narrative</ion-label>
+          <ion-input type="textarea"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD, HH:mm:ss" min="2005" max="2020" formControlName="transactionTime"></ion-datetime>
+        </ion-item>
+
+        <ion-button (click)="transferSubmit()" [disabled]="!transfer.valid" expand="full" fill="clear">Save</ion-button>
+      </form>
+    </nz-tab>
+  </nz-tabset>
+</bff-shared-padding>

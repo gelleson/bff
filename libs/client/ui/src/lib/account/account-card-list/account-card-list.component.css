@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  overflow-x: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container-item {
+  min-width: 250px;
+  background: #02ff73;
+  margin-right: 20px;
+  color: white;
+  padding: 50px 10px;
+  border-radius: 20px;
+}
+
+.container-empty {
+  min-width: 120px;
+  align-items: center;
+  text-align: center;
+  background: #83ffbf;
+  margin-right: 20px;
+  color: white;
+  padding: 60px 50px;
+  border-radius: 20px;
+}
+
+h6, h5 {
+  color: inherit;
+  font-weight: bold;
+}

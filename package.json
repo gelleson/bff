@@ -24,7 +24,16 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "clean": "npx rimraf -- hooks node_modules package-lock.json && npm i",
+    "build.ionic.finance": "nx build ionic-finance",
+    "prepare.ionic.finance": "npm run clean && npm run clean.ionic.finance && npm run build.ionic.finance",
+    "prepare.ionic.finance.ios": "npm run prepare.ionic.finance && cd apps/ionic-finance && npx rimraf -- ios && npm run cap.add.ios",
+    "prepare.ionic.finance.android": "npm run prepare.ionic.finance && cd apps/ionic-finance && npx rimraf -- android && npm run cap.add.android",
+    "open.ionic.finance.ios": "cd apps/ionic-finance && npm run cap.ios",
+    "open.ionic.finance.android": "cd apps/ionic-finance && npm run cap.android",
+    "sync.ionic.finance": "cd apps/ionic-finance && npm run cap.copy",
+    "clean.ionic.finance": "cd apps/ionic-finance && npx rimraf -- hooks node_modules platforms www plugins package-lock.json && npm i && rimraf -- package-lock.json"
   },
   "private": true,
   "dependencies": {
@@ -48,12 +57,14 @@
     "@nestjs/typeorm": "^7.1.5",
     "@nrwl/angular": "^10.4.4",
     "@nrwl/node": "10.4.4",
+    "@nstudio/xplat": "^10.2.0",
     "@types/bcrypt": "^3.0.0",
     "bcrypt": "^5.0.0",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "localforage": "^1.9.0",
     "moment": "^2.29.1",
+    "nestjsx-automapper": "^3.1.4",
     "ng-zorro-antd": "^10.2.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -65,10 +76,17 @@
     "typeorm": "^0.2.29",
     "typeorm-naming-strategies": "^2.0.0",
     "typeorm-transactional-cls-hooked": "^0.1.17",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "@ionic-native/core": "^5.23.0",
+    "@ionic-native/splash-screen": "^5.23.0",
+    "@ionic-native/status-bar": "^5.23.0",
+    "@ionic/angular": "~5.3.1",
+    "@capacitor/core": "~2.4.0",
+    "@capacitor/android": "~2.4.0",
+    "@capacitor/ios": "~2.4.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1001.3",
+    "@angular-devkit/build-angular": "~0.1000.6",
     "@angular/compiler-cli": "^10.1.0",
     "@angular/language-service": "^10.1.0",
     "@nestjs/schematics": "^7.0.0",
@@ -85,7 +103,7 @@
     "@types/passport-jwt": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
-    "codelyzer": "~5.0.1",
+    "codelyzer": "~6.0.0",
     "cypress": "^5.5.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
@@ -96,10 +114,32 @@
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.3",
+    "@nstudio/ionic-angular": "*",
+    "@nrwl/angular": "^10.4.4",
+    "@nstudio/ionic": "*",
+    "@nstudio/angular": "*",
+    "@nstudio/web-angular": "*",
+    "@angular-devkit/architect": "~0.1000.6",
+    "@angular-devkit/core": "~10.1.0",
+    "@angular-devkit/schematics": "~10.1.0",
+    "@ionic/angular-toolkit": "^2.3.0",
+    "@types/jasmine": "~3.5.9",
+    "@types/jasminewd2": "~2.0.3",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.2",
+    "karma": "~5.1.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
+    "karma-jasmine": "~4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.2"
   },
   "akitaCli": {
     "template": "angular",
     "basePath": "./libs/frontend/core/src/lib/"
+  },
+  "xplat": {
+    "prefix": "bff",
+    "framework": "angular"
   }
 }

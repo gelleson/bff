@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AccountService, SessionQuery, SessionStore } from '@bff/frontend/core';
-import { CurrentSession } from '@bff/frontend/core';
+import { AccountService, SessionQuery, SessionStore } from '@bff/client/core';
+import { CurrentSession } from '@bff/client/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class AppComponent {
 
     accountService
       .getAll()
-      .subscribe(d => console.dir(d, -1))
+      .subscribe()
   }
 
   public logout() {

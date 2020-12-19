@@ -39,16 +39,22 @@
       "tags": [],
       "implicitDependencies": ["finance-web"]
     },
-    "shared": {
+    "client-core": {
       "tags": []
     },
-    "frontend-core": {
+    "client-ui": {
       "tags": []
     },
-    "interface": {
+    "api-shared": {
       "tags": []
     },
-    "frontend-ui": {
+    "api-modules": {
+      "tags": []
+    },
+    "ionic-finance": {
+      "tags": []
+    },
+    "client-shared": {
       "tags": []
     }
   }

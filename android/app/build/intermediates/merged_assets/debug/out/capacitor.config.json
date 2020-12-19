@@ -1,0 +1,13 @@
+{
+  "appId": "kz.gelleson.finance_mobile",
+  "appName": "finance mobile",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/apps/finance-mobile",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
