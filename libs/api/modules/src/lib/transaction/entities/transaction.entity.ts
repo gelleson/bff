@@ -5,6 +5,7 @@ import { BaseModel } from '@bff/api/database';
 import { User } from '../../user/user.entity';
 import { Exclude } from 'class-transformer';
 import { IAccount } from '../../account/interface/account.interface';
+import { Category } from './category.entity';
 
 @Entity({
   name: 'transactions'
@@ -52,6 +53,13 @@ export class Transaction extends BaseModel<Transaction>{
     nullable: true
   })
   narrative?: string;
+
+  @ManyToOne(() => Category, {
+    onDelete: 'CASCADE',
+    nullable: true,
+  })
+  @JoinColumn()
+  category?: Category;
 
   @Column('date')
   operationDate: Date;
