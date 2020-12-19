@@ -8,7 +8,7 @@ export interface IAccountShort {
 export interface ITransaction {
   id: number;
   amount: number;
-  operation: Operation;
+  operation: 'WITHDRAW' | 'INCOME' | 'TRANSFER';
   transactionTime: Date;
   operationDate?: any;
   credit?: IAccountShort;
