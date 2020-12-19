@@ -1,1 +1,57 @@
-<p>auth works!</p>
+<bff-shared-padding top="20vh">
+
+
+  <ion-segment [(ngModel)]="value">
+    <ion-segment-button value="login">
+      <ion-label>Sign in</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reg">
+      <ion-label>Sign up</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ng-container [ngSwitch]="value">
+    <ng-container *ngSwitchCase="'login'">
+      <form [formGroup]="loginForm">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-button (click)="login()" expand="full" fill="clear">Login</ion-button>
+      </form>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'reg'">
+
+      <form [formGroup]="regForm">
+        <ion-item>
+          <ion-label position="stacked">First Name</ion-label>
+          <ion-input formControlName="firstName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Last Name</ion-label>
+          <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <ion-button (click)="registration()" expand="full" fill="clear">Registration</ion-button>
+
+      </form>
+    </ng-container>
+  </ng-container>
+</bff-shared-padding>
